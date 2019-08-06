@@ -1,0 +1,5 @@
+package-lock.json
+.swagger-codegen-ignore
+.swagger-codegen/
+git_push.sh
+node_modules/

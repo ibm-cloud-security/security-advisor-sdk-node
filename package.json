@@ -1,0 +1,39 @@
+{
+  "name": "ibmcloud-security-advisor-findings",
+  "version": "1.0.0",
+  "author": "Ashish K Thakur <ashishth@in.ibm.com>",
+  "contributors": [
+    "Sudheesh S Kairali <skairali@in.ibm.com>",
+    "Vijay R K <vkalangu@in.ibm.com",
+    "Jagdish Kumar <jagkuma3@in.ibm.com>"
+  ],
+  "description": "JavaScript client library for the IBM Cloud Security Advisor Findings API",
+  "keywords": [
+    "ibm",
+    "security-advisor",
+    "v1",
+    "api",
+    "findings"
+  ],
+  "homepage": "https://cloud.ibm.com/apidocs/security-advisor/findings",
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs"
+  },
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "dependencies": {
+    "superagent": "5.1.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "^6.2.0",
+    "sinon": "1.17.3"
+  },
+  "engines": {
+    "node": ">=6.4.0"
+  }
+}
