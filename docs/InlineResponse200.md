@@ -2,11 +2,10 @@
 
 ### Description
 
-Response including listed notes.
+Response including listed providers
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**notes** | [**[InlineResponse200Notes]**](InlineResponse200Notes.md) |  | [optional] 
-**next_page_token** | **String** | The next pagination token in the list response. It should be used as page_token for the following request. An empty value means no more result. | [optional] 
+**providers** | [**[InlineResponse200Providers]**](InlineResponse200Providers.md) |  | [optional] 
 

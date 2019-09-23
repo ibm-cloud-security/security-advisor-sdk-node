@@ -24,16 +24,17 @@ var ApiClient = require('../ApiClient');
 
 /**
  * Constructs a new <code>ApiProvider</code>.
- * Provides detailed description of a &#x60;Provider&#x60;.
+ * Provides a detailed description of a &#x60;Provider&#x60;.
  * @alias module:model/ApiProvider
  * @class
+ * @param name {String} 
+ * @param id {String} 
  */
-var exports = function() {
+var exports = function(name, id) {
   var _this = this;
 
-
-
-
+  _this['name'] = name;
+  _this['id'] = id;
 };
 
 /**
@@ -53,9 +54,6 @@ exports.constructFromObject = function(data, obj) {
       if (data.hasOwnProperty('id')) {
       obj['id'] = ApiClient.convertToType(data['id'], 'String');
     }
-      if (data.hasOwnProperty('shared')) {
-      obj['shared'] = ApiClient.convertToType(data['shared'], 'Boolean');
-    }
     }
   return obj;
 }
@@ -68,12 +66,6 @@ exports.prototype['name'] = undefined;
  * @member {String} id
  */
 exports.prototype['id'] = undefined;
-/**
- * True if this `Provider` can be shared by multiple accounts.
- * @member {Boolean} shared
- * @default true
- */
-exports.prototype['shared'] = true;
 
 
 

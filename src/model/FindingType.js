@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse200FindingNextSteps = require('./InlineResponse200FindingNextSteps');
+var InlineResponse2001FindingNextSteps = require('./InlineResponse2001FindingNextSteps');
 
 
 
@@ -52,7 +52,7 @@ exports.constructFromObject = function(data, obj) {
       obj['severity'] = ApiClient.convertToType(data['severity'], 'String');
     }
       if (data.hasOwnProperty('next_steps')) {
-      obj['next_steps'] = ApiClient.convertToType(data['next_steps'], [InlineResponse200FindingNextSteps]);
+      obj['next_steps'] = ApiClient.convertToType(data['next_steps'], [InlineResponse2001FindingNextSteps]);
     }
     }
   return obj;
@@ -65,7 +65,7 @@ exports.constructFromObject = function(data, obj) {
 exports.prototype['severity'] = undefined;
 /**
  * Common remediation steps for the finding of this type
- * @member {Array.<module:model/InlineResponse200FindingNextSteps>} next_steps
+ * @member {Array.<module:model/InlineResponse2001FindingNextSteps>} next_steps
  */
 exports.prototype['next_steps'] = undefined;
 

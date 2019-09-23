@@ -15,5 +15,5 @@ Name | Type | Description | Notes
 **requires_configuration** | **Boolean** |  | [optional] [default to false]
 **badge_text** | **String** | The text associated to the card&#39;s badge | [optional] 
 **badge_image** | **String** | The base64 content of the image associated to the card&#39;s badge | [optional] 
-**elements** | [**[InlineResponse200CardElements]**](InlineResponse200CardElements.md) | The elements of this card | 
+**elements** | [**[InlineResponse2001CardElements]**](InlineResponse2001CardElements.md) | The elements of this card | 
 

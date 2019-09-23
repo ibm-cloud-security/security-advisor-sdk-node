@@ -14,9 +14,9 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse2001FindingDataTransferred = require('./InlineResponse2001FindingDataTransferred');
-var InlineResponse2001FindingNetworkConnection = require('./InlineResponse2001FindingNetworkConnection');
-var InlineResponse200FindingNextSteps = require('./InlineResponse200FindingNextSteps');
+var InlineResponse2001FindingNextSteps = require('./InlineResponse2001FindingNextSteps');
+var InlineResponse2002FindingDataTransferred = require('./InlineResponse2002FindingDataTransferred');
+var InlineResponse2002FindingNetworkConnection = require('./InlineResponse2002FindingNetworkConnection');
 
 
 
@@ -59,13 +59,13 @@ exports.constructFromObject = function(data, obj) {
       obj['certainty'] = ApiClient.convertToType(data['certainty'], 'String');
     }
       if (data.hasOwnProperty('next_steps')) {
-      obj['next_steps'] = ApiClient.convertToType(data['next_steps'], [InlineResponse200FindingNextSteps]);
+      obj['next_steps'] = ApiClient.convertToType(data['next_steps'], [InlineResponse2001FindingNextSteps]);
     }
       if (data.hasOwnProperty('network_connection')) {
-      obj['network_connection'] = InlineResponse2001FindingNetworkConnection.constructFromObject(data['network_connection']);
+      obj['network_connection'] = InlineResponse2002FindingNetworkConnection.constructFromObject(data['network_connection']);
     }
       if (data.hasOwnProperty('data_transferred')) {
-      obj['data_transferred'] = InlineResponse2001FindingDataTransferred.constructFromObject(data['data_transferred']);
+      obj['data_transferred'] = InlineResponse2002FindingDataTransferred.constructFromObject(data['data_transferred']);
     }
     }
   return obj;
@@ -83,15 +83,15 @@ exports.prototype['severity'] = undefined;
 exports.prototype['certainty'] = undefined;
 /**
  * Remediation steps for the issues reported in this finding. They override the note's next steps.
- * @member {Array.<module:model/InlineResponse200FindingNextSteps>} next_steps
+ * @member {Array.<module:model/InlineResponse2001FindingNextSteps>} next_steps
  */
 exports.prototype['next_steps'] = undefined;
 /**
- * @member {module:model/InlineResponse2001FindingNetworkConnection} network_connection
+ * @member {module:model/InlineResponse2002FindingNetworkConnection} network_connection
  */
 exports.prototype['network_connection'] = undefined;
 /**
- * @member {module:model/InlineResponse2001FindingDataTransferred} data_transferred
+ * @member {module:model/InlineResponse2002FindingDataTransferred} data_transferred
  */
 exports.prototype['data_transferred'] = undefined;
 

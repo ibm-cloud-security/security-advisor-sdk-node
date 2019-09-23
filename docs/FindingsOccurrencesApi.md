@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="createOccurrence"></a>
 # **createOccurrence**
-> InlineResponse2001Occurrences createOccurrence(accountId, authorization, providerId, body, opts)
+> InlineResponse2002Occurrences createOccurrence(accountId, authorization, providerId, body, opts)
 
 Creates a new &#x60;Occurrence&#x60;. Use this method to create &#x60;Occurrences&#x60; for a resource.
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001Occurrences**](InlineResponse2001Occurrences.md)
+[**InlineResponse2002Occurrences**](InlineResponse2002Occurrences.md)
 
 ### HTTP request headers
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 <a name="getOccurrence"></a>
 # **getOccurrence**
-> InlineResponse2001 getOccurrence(accountId, authorization, providerId, occurrenceId)
+> InlineResponse2002 getOccurrence(accountId, authorization, providerId, occurrenceId)
 
 Returns the requested &#x60;Occurrence&#x60;.
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### HTTP request headers
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 <a name="listNoteOccurrences"></a>
 # **listNoteOccurrences**
-> InlineResponse2002 listNoteOccurrences(accountId, authorization, providerId, noteId, opts)
+> InlineResponse2003 listNoteOccurrences(accountId, authorization, providerId, noteId, opts)
 
 Lists &#x60;Occurrences&#x60; referencing the specified &#x60;Note&#x60;. Use this method to get all occurrences referencing your &#x60;Note&#x60; across all your customer providers.
 
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### HTTP request headers
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 <a name="listOccurrences"></a>
 # **listOccurrences**
-> InlineResponse2001 listOccurrences(accountId, authorization, providerId, opts)
+> InlineResponse2002 listOccurrences(accountId, authorization, providerId, opts)
 
 Lists active &#x60;Occurrences&#x60; for a given provider matching the filters.
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### HTTP request headers
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="updateOccurrence"></a>
 # **updateOccurrence**
-> InlineResponse2001Occurrences updateOccurrence(accountId, authorization, providerId, occurrenceId, body)
+> InlineResponse2002Occurrences updateOccurrence(accountId, authorization, providerId, occurrenceId, body)
 
 Updates an existing &#x60;Occurrence&#x60;.
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001Occurrences**](InlineResponse2001Occurrences.md)
+[**InlineResponse2002Occurrences**](InlineResponse2002Occurrences.md)
 
 ### HTTP request headers
 

@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **direction** | **String** | The direction of this network connection | [optional] 
 **protocol** | **String** | The protocol of this network connection | [optional] 
-**client** | [**InlineResponse2001FindingNetworkConnectionClient**](InlineResponse2001FindingNetworkConnectionClient.md) |  | [optional] 
-**server** | [**InlineResponse2001FindingNetworkConnectionClient**](InlineResponse2001FindingNetworkConnectionClient.md) |  | [optional] 
+**client** | [**InlineResponse2002FindingNetworkConnectionClient**](InlineResponse2002FindingNetworkConnectionClient.md) |  | [optional] 
+**server** | [**InlineResponse2002FindingNetworkConnectionClient**](InlineResponse2002FindingNetworkConnectionClient.md) |  | [optional] 
 

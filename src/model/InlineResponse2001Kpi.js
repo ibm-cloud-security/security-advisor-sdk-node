@@ -24,16 +24,15 @@ var ApiClient = require('../ApiClient');
 
 /**
  * Constructs a new <code>InlineResponse2001Kpi</code>.
- * Kpi provides details about a KPI occurrence.
+ * KpiType provides details about a KPI note.
  * @alias module:model/InlineResponse2001Kpi
  * @class
- * @param value {Number} The value of this KPI
+ * @param aggregationType {module:model/InlineResponse2001Kpi.AggregationTypeEnum} The aggregation type of the KPI values. - SUM&#58; A single-value metrics aggregation type that sums up numeric values   that are extracted from KPI occurrences.
  */
-var exports = function(value) {
+var exports = function(aggregationType) {
   var _this = this;
 
-  _this['value'] = value;
-
+  _this['aggregation_type'] = aggregationType;
 };
 
 /**
@@ -47,28 +46,32 @@ exports.constructFromObject = function(data, obj) {
   if (data) {
     obj = obj || new exports();
 
-      if (data.hasOwnProperty('value')) {
-      obj['value'] = ApiClient.convertToType(data['value'], 'Number');
-    }
-      if (data.hasOwnProperty('total')) {
-      obj['total'] = ApiClient.convertToType(data['total'], 'Number');
+      if (data.hasOwnProperty('aggregation_type')) {
+      obj['aggregation_type'] = ApiClient.convertToType(data['aggregation_type'], 'String');
     }
     }
   return obj;
 }
 
 /**
- * The value of this KPI
- * @member {Number} value
+ * The aggregation type of the KPI values. - SUM&#58; A single-value metrics aggregation type that sums up numeric values   that are extracted from KPI occurrences.
+ * @member {module:model/InlineResponse2001Kpi.AggregationTypeEnum} aggregation_type
+ * @default 'SUM'
  */
-exports.prototype['value'] = undefined;
-/**
- * The total value of this KPI
- * @member {Number} total
- */
-exports.prototype['total'] = undefined;
+exports.prototype['aggregation_type'] = 'SUM';
 
 
+  /**
+   * Allowed values for the <code>aggregation_type</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.AggregationTypeEnum = {
+    /**
+     * value: "SUM"
+     * @const
+     */
+    "SUM": "SUM"  };
 
 module.exports = exports;
 

@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse200CardElements = require('./InlineResponse200CardElements');
+var InlineResponse2001CardElements = require('./InlineResponse2001CardElements');
 
 
 
@@ -32,7 +32,7 @@ var InlineResponse200CardElements = require('./InlineResponse200CardElements');
  * @param title {String} The title of this card
  * @param subtitle {String} The subtitle of this card
  * @param findingNoteNames {Array.<String>} The finding note names associated to this card
- * @param elements {Array.<module:model/InlineResponse200CardElements>} The elements of this card
+ * @param elements {Array.<module:model/InlineResponse2001CardElements>} The elements of this card
  */
 var exports = function(section, title, subtitle, findingNoteNames, elements) {
   var _this = this;
@@ -84,7 +84,7 @@ exports.constructFromObject = function(data, obj) {
       obj['badge_image'] = ApiClient.convertToType(data['badge_image'], 'String');
     }
       if (data.hasOwnProperty('elements')) {
-      obj['elements'] = ApiClient.convertToType(data['elements'], [InlineResponse200CardElements]);
+      obj['elements'] = ApiClient.convertToType(data['elements'], [InlineResponse2001CardElements]);
     }
     }
   return obj;
@@ -132,7 +132,7 @@ exports.prototype['badge_text'] = undefined;
 exports.prototype['badge_image'] = undefined;
 /**
  * The elements of this card
- * @member {Array.<module:model/InlineResponse200CardElements>} elements
+ * @member {Array.<module:model/InlineResponse2001CardElements>} elements
  */
 exports.prototype['elements'] = undefined;
 

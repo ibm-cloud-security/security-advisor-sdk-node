@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="createNote"></a>
 # **createNote**
-> InlineResponse200Notes createNote(accountId, authorization, providerId, body)
+> InlineResponse2001Notes createNote(accountId, authorization, providerId, body)
 
 Creates a new &#x60;Note&#x60;.
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200Notes**](InlineResponse200Notes.md)
+[**InlineResponse2001Notes**](InlineResponse2001Notes.md)
 
 ### HTTP request headers
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 <a name="getNote"></a>
 # **getNote**
-> InlineResponse200Notes getNote(accountId, authorization, providerId, noteId)
+> InlineResponse2001Notes getNote(accountId, authorization, providerId, noteId)
 
 Returns the requested &#x60;Note&#x60;.
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200Notes**](InlineResponse200Notes.md)
+[**InlineResponse2001Notes**](InlineResponse2001Notes.md)
 
 ### HTTP request headers
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 <a name="getOccurrenceNote"></a>
 # **getOccurrenceNote**
-> InlineResponse200Notes getOccurrenceNote(accountId, authorization, providerId, occurrenceId)
+> InlineResponse2001Notes getOccurrenceNote(accountId, authorization, providerId, occurrenceId)
 
 Gets the &#x60;Note&#x60; attached to the given &#x60;Occurrence&#x60;.
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200Notes**](InlineResponse200Notes.md)
+[**InlineResponse2001Notes**](InlineResponse2001Notes.md)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 <a name="listNotes"></a>
 # **listNotes**
-> InlineResponse200 listNotes(accountId, authorization, providerId, opts)
+> InlineResponse2001 listNotes(accountId, authorization, providerId, opts)
 
 Lists all &#x60;Notes&#x60; for a given provider.
 
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### HTTP request headers
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 <a name="updateNote"></a>
 # **updateNote**
-> InlineResponse200Notes updateNote(accountId, authorization, providerId, noteId, body)
+> InlineResponse2001Notes updateNote(accountId, authorization, providerId, noteId, body)
 
 Updates an existing &#x60;Note&#x60;.
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200Notes**](InlineResponse200Notes.md)
+[**InlineResponse2001Notes**](InlineResponse2001Notes.md)
 
 ### HTTP request headers
 

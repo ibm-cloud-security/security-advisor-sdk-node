@@ -14,9 +14,9 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse2001Context = require('./InlineResponse2001Context');
-var InlineResponse2001Finding = require('./InlineResponse2001Finding');
-var InlineResponse2001Kpi = require('./InlineResponse2001Kpi');
+var InlineResponse2002Context = require('./InlineResponse2002Context');
+var InlineResponse2002Finding = require('./InlineResponse2002Finding');
+var InlineResponse2002Kpi = require('./InlineResponse2002Kpi');
 
 
 
@@ -90,13 +90,13 @@ exports.constructFromObject = function(data, obj) {
       obj['id'] = ApiClient.convertToType(data['id'], 'String');
     }
       if (data.hasOwnProperty('context')) {
-      obj['context'] = InlineResponse2001Context.constructFromObject(data['context']);
+      obj['context'] = InlineResponse2002Context.constructFromObject(data['context']);
     }
       if (data.hasOwnProperty('finding')) {
-      obj['finding'] = InlineResponse2001Finding.constructFromObject(data['finding']);
+      obj['finding'] = InlineResponse2002Finding.constructFromObject(data['finding']);
     }
       if (data.hasOwnProperty('kpi')) {
-      obj['kpi'] = InlineResponse2001Kpi.constructFromObject(data['kpi']);
+      obj['kpi'] = InlineResponse2002Kpi.constructFromObject(data['kpi']);
     }
     }
   return obj;
@@ -145,15 +145,15 @@ exports.prototype['provider_id'] = undefined;
  */
 exports.prototype['id'] = undefined;
 /**
- * @member {module:model/InlineResponse2001Context} context
+ * @member {module:model/InlineResponse2002Context} context
  */
 exports.prototype['context'] = undefined;
 /**
- * @member {module:model/InlineResponse2001Finding} finding
+ * @member {module:model/InlineResponse2002Finding} finding
  */
 exports.prototype['finding'] = undefined;
 /**
- * @member {module:model/InlineResponse2001Kpi} kpi
+ * @member {module:model/InlineResponse2002Kpi} kpi
  */
 exports.prototype['kpi'] = undefined;
 

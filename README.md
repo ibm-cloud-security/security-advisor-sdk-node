@@ -52,6 +52,32 @@ To target different regions set the `basePath` on the client instance accordingl
 `Authorization token` to be passed as second paramters in all the function calls is obtained by calling [IBM Cloud IAM API](https://cloud.ibm.com/apidocs/iam-identity-token-api). It is a bearer token in JWT format.
 Find a sample [here](https://cloud.ibm.com/apidocs/security-advisor/findings#authentication). Read more about the access [here](https://cloud.ibm.com/docs/security-advisor?topic=security-advisor-service-access)
 
+### Support for retry
+The retry is configurable via the following options:
+* maxRetry - Default value is 3
+* retryFn - A function which takes two arguments - error and response. It should return `true` in case retry should be performed.
+Its default implementation is:
+```js
+(err, res) => {
+  if (res && res.status && res.status >= 500 && res.status !== 501) return true;
+}
+```
+In addition the SDK retries the request in case the following error codes are received:
+* ECONNRESET
+* ETIMEDOUT
+* EADDRINFO
+* ESOCKETTIMEDOUT
+
+You can override the behavior by `retryFn`.
+
+```javascript
+var findings = require('ibmcloud-security-advisor-findings');
+var defaultClient = findings.ApiClient.instance;
+defaultClient.maxRetry = 2
+defaultClient.retryFn = (err, res) => {
+    // Return true if it should be retried
+}
+```
 
 ## Documentation for API Endpoints
 
@@ -75,6 +101,7 @@ Class | Method | HTTP request | Description
 *findings.FindingsOccurrencesApi* | [**listNoteOccurrences**](docs/FindingsOccurrencesApi.md#listNoteOccurrences) | **GET** /v1/{account_id}/providers/{provider_id}/notes/{note_id}/occurrences | Lists &#x60;Occurrences&#x60; referencing the specified &#x60;Note&#x60;. Use this method to get all occurrences referencing your &#x60;Note&#x60; across all your customer providers.
 *findings.FindingsOccurrencesApi* | [**listOccurrences**](docs/FindingsOccurrencesApi.md#listOccurrences) | **GET** /v1/{account_id}/providers/{provider_id}/occurrences | Lists active &#x60;Occurrences&#x60; for a given provider matching the filters.
 *findings.FindingsOccurrencesApi* | [**updateOccurrence**](docs/FindingsOccurrencesApi.md#updateOccurrence) | **PUT** /v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id} | Updates an existing &#x60;Occurrence&#x60;.
+*findings.FindingsProvidersApi* | [**listProviders**](docs/FindingsProvidersApi.md#listProviders) | **GET** /v1/{account_id}/providers | Lists all &#x60;Providers&#x60; for a given account id.
 
 
 ## Documentation for Models
@@ -84,7 +111,6 @@ Class | Method | HTTP request | Description
  - [findings.ApiListNotesResponse](docs/ApiListNotesResponse.md)
  - [findings.ApiListOccurrencesResponse](docs/ApiListOccurrencesResponse.md)
  - [findings.ApiListProvidersResponse](docs/ApiListProvidersResponse.md)
- - [findings.ApiListProvidersResponseInner](docs/ApiListProvidersResponseInner.md)
  - [findings.ApiNote](docs/ApiNote.md)
  - [findings.ApiNoteKind](docs/ApiNoteKind.md)
  - [findings.ApiNoteRelatedUrl](docs/ApiNoteRelatedUrl.md)
@@ -105,23 +131,25 @@ Class | Method | HTTP request | Description
  - [findings.FindingType](docs/FindingType.md)
  - [findings.InlineResponse200](docs/InlineResponse200.md)
  - [findings.InlineResponse2001](docs/InlineResponse2001.md)
- - [findings.InlineResponse2001Context](docs/InlineResponse2001Context.md)
+ - [findings.InlineResponse2001Card](docs/InlineResponse2001Card.md)
+ - [findings.InlineResponse2001CardElements](docs/InlineResponse2001CardElements.md)
  - [findings.InlineResponse2001Finding](docs/InlineResponse2001Finding.md)
- - [findings.InlineResponse2001FindingDataTransferred](docs/InlineResponse2001FindingDataTransferred.md)
- - [findings.InlineResponse2001FindingNetworkConnection](docs/InlineResponse2001FindingNetworkConnection.md)
- - [findings.InlineResponse2001FindingNetworkConnectionClient](docs/InlineResponse2001FindingNetworkConnectionClient.md)
+ - [findings.InlineResponse2001FindingNextSteps](docs/InlineResponse2001FindingNextSteps.md)
  - [findings.InlineResponse2001Kpi](docs/InlineResponse2001Kpi.md)
- - [findings.InlineResponse2001Occurrences](docs/InlineResponse2001Occurrences.md)
+ - [findings.InlineResponse2001Notes](docs/InlineResponse2001Notes.md)
+ - [findings.InlineResponse2001RelatedUrl](docs/InlineResponse2001RelatedUrl.md)
+ - [findings.InlineResponse2001ReportedBy](docs/InlineResponse2001ReportedBy.md)
+ - [findings.InlineResponse2001Section](docs/InlineResponse2001Section.md)
  - [findings.InlineResponse2002](docs/InlineResponse2002.md)
- - [findings.InlineResponse200Card](docs/InlineResponse200Card.md)
- - [findings.InlineResponse200CardElements](docs/InlineResponse200CardElements.md)
- - [findings.InlineResponse200Finding](docs/InlineResponse200Finding.md)
- - [findings.InlineResponse200FindingNextSteps](docs/InlineResponse200FindingNextSteps.md)
- - [findings.InlineResponse200Kpi](docs/InlineResponse200Kpi.md)
- - [findings.InlineResponse200Notes](docs/InlineResponse200Notes.md)
- - [findings.InlineResponse200RelatedUrl](docs/InlineResponse200RelatedUrl.md)
- - [findings.InlineResponse200ReportedBy](docs/InlineResponse200ReportedBy.md)
- - [findings.InlineResponse200Section](docs/InlineResponse200Section.md)
+ - [findings.InlineResponse2002Context](docs/InlineResponse2002Context.md)
+ - [findings.InlineResponse2002Finding](docs/InlineResponse2002Finding.md)
+ - [findings.InlineResponse2002FindingDataTransferred](docs/InlineResponse2002FindingDataTransferred.md)
+ - [findings.InlineResponse2002FindingNetworkConnection](docs/InlineResponse2002FindingNetworkConnection.md)
+ - [findings.InlineResponse2002FindingNetworkConnectionClient](docs/InlineResponse2002FindingNetworkConnectionClient.md)
+ - [findings.InlineResponse2002Kpi](docs/InlineResponse2002Kpi.md)
+ - [findings.InlineResponse2002Occurrences](docs/InlineResponse2002Occurrences.md)
+ - [findings.InlineResponse2003](docs/InlineResponse2003.md)
+ - [findings.InlineResponse200Providers](docs/InlineResponse200Providers.md)
  - [findings.Kpi](docs/Kpi.md)
  - [findings.KpiType](docs/KpiType.md)
  - [findings.KpiValueType](docs/KpiValueType.md)

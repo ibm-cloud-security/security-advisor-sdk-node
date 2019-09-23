@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiEmpty', 'model/ApiListNoteOccurrencesResponse', 'model/ApiListNotesResponse', 'model/ApiListOccurrencesResponse', 'model/ApiListProvidersResponse', 'model/ApiListProvidersResponseInner', 'model/ApiNote', 'model/ApiNoteKind', 'model/ApiNoteRelatedUrl', 'model/ApiOccurrence', 'model/ApiProvider', 'model/Body', 'model/Body1', 'model/Body2', 'model/Body3', 'model/BreakdownCardElement', 'model/Card', 'model/CardElement', 'model/Certainty', 'model/Context', 'model/DataTransferred', 'model/Finding', 'model/FindingCountValueType', 'model/FindingType', 'model/InlineResponse200', 'model/InlineResponse2001', 'model/InlineResponse2001Context', 'model/InlineResponse2001Finding', 'model/InlineResponse2001FindingDataTransferred', 'model/InlineResponse2001FindingNetworkConnection', 'model/InlineResponse2001FindingNetworkConnectionClient', 'model/InlineResponse2001Kpi', 'model/InlineResponse2001Occurrences', 'model/InlineResponse2002', 'model/InlineResponse200Card', 'model/InlineResponse200CardElements', 'model/InlineResponse200Finding', 'model/InlineResponse200FindingNextSteps', 'model/InlineResponse200Kpi', 'model/InlineResponse200Notes', 'model/InlineResponse200RelatedUrl', 'model/InlineResponse200ReportedBy', 'model/InlineResponse200Section', 'model/Kpi', 'model/KpiType', 'model/KpiValueType', 'model/NetworkConnection', 'model/NumericCardElement', 'model/NumericCardElementValueType', 'model/RemediationStep', 'model/Reporter', 'model/Section', 'model/Severity', 'model/SocketAddress', 'model/TimeSeriesCardElement', 'model/ValueType', 'api/FindingsGraphApi', 'api/FindingsNotesApi', 'api/FindingsOccurrencesApi'], factory);
+    define(['ApiClient', 'model/ApiEmpty', 'model/ApiListNoteOccurrencesResponse', 'model/ApiListNotesResponse', 'model/ApiListOccurrencesResponse', 'model/ApiListProvidersResponse', 'model/ApiNote', 'model/ApiNoteKind', 'model/ApiNoteRelatedUrl', 'model/ApiOccurrence', 'model/ApiProvider', 'model/Body', 'model/Body1', 'model/Body2', 'model/Body3', 'model/BreakdownCardElement', 'model/Card', 'model/CardElement', 'model/Certainty', 'model/Context', 'model/DataTransferred', 'model/Finding', 'model/FindingCountValueType', 'model/FindingType', 'model/InlineResponse200', 'model/InlineResponse2001', 'model/InlineResponse2001Card', 'model/InlineResponse2001CardElements', 'model/InlineResponse2001Finding', 'model/InlineResponse2001FindingNextSteps', 'model/InlineResponse2001Kpi', 'model/InlineResponse2001Notes', 'model/InlineResponse2001RelatedUrl', 'model/InlineResponse2001ReportedBy', 'model/InlineResponse2001Section', 'model/InlineResponse2002', 'model/InlineResponse2002Context', 'model/InlineResponse2002Finding', 'model/InlineResponse2002FindingDataTransferred', 'model/InlineResponse2002FindingNetworkConnection', 'model/InlineResponse2002FindingNetworkConnectionClient', 'model/InlineResponse2002Kpi', 'model/InlineResponse2002Occurrences', 'model/InlineResponse2003', 'model/InlineResponse200Providers', 'model/Kpi', 'model/KpiType', 'model/KpiValueType', 'model/NetworkConnection', 'model/NumericCardElement', 'model/NumericCardElementValueType', 'model/RemediationStep', 'model/Reporter', 'model/Section', 'model/Severity', 'model/SocketAddress', 'model/TimeSeriesCardElement', 'model/ValueType', 'api/FindingsGraphApi', 'api/FindingsNotesApi', 'api/FindingsOccurrencesApi', 'api/FindingsProvidersApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/ApiEmpty'), require('./model/ApiListNoteOccurrencesResponse'), require('./model/ApiListNotesResponse'), require('./model/ApiListOccurrencesResponse'), require('./model/ApiListProvidersResponse'), require('./model/ApiListProvidersResponseInner'), require('./model/ApiNote'), require('./model/ApiNoteKind'), require('./model/ApiNoteRelatedUrl'), require('./model/ApiOccurrence'), require('./model/ApiProvider'), require('./model/Body'), require('./model/Body1'), require('./model/Body2'), require('./model/Body3'), require('./model/BreakdownCardElement'), require('./model/Card'), require('./model/CardElement'), require('./model/Certainty'), require('./model/Context'), require('./model/DataTransferred'), require('./model/Finding'), require('./model/FindingCountValueType'), require('./model/FindingType'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2001Context'), require('./model/InlineResponse2001Finding'), require('./model/InlineResponse2001FindingDataTransferred'), require('./model/InlineResponse2001FindingNetworkConnection'), require('./model/InlineResponse2001FindingNetworkConnectionClient'), require('./model/InlineResponse2001Kpi'), require('./model/InlineResponse2001Occurrences'), require('./model/InlineResponse2002'), require('./model/InlineResponse200Card'), require('./model/InlineResponse200CardElements'), require('./model/InlineResponse200Finding'), require('./model/InlineResponse200FindingNextSteps'), require('./model/InlineResponse200Kpi'), require('./model/InlineResponse200Notes'), require('./model/InlineResponse200RelatedUrl'), require('./model/InlineResponse200ReportedBy'), require('./model/InlineResponse200Section'), require('./model/Kpi'), require('./model/KpiType'), require('./model/KpiValueType'), require('./model/NetworkConnection'), require('./model/NumericCardElement'), require('./model/NumericCardElementValueType'), require('./model/RemediationStep'), require('./model/Reporter'), require('./model/Section'), require('./model/Severity'), require('./model/SocketAddress'), require('./model/TimeSeriesCardElement'), require('./model/ValueType'), require('./api/FindingsGraphApi'), require('./api/FindingsNotesApi'), require('./api/FindingsOccurrencesApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/ApiEmpty'), require('./model/ApiListNoteOccurrencesResponse'), require('./model/ApiListNotesResponse'), require('./model/ApiListOccurrencesResponse'), require('./model/ApiListProvidersResponse'), require('./model/ApiNote'), require('./model/ApiNoteKind'), require('./model/ApiNoteRelatedUrl'), require('./model/ApiOccurrence'), require('./model/ApiProvider'), require('./model/Body'), require('./model/Body1'), require('./model/Body2'), require('./model/Body3'), require('./model/BreakdownCardElement'), require('./model/Card'), require('./model/CardElement'), require('./model/Certainty'), require('./model/Context'), require('./model/DataTransferred'), require('./model/Finding'), require('./model/FindingCountValueType'), require('./model/FindingType'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2001Card'), require('./model/InlineResponse2001CardElements'), require('./model/InlineResponse2001Finding'), require('./model/InlineResponse2001FindingNextSteps'), require('./model/InlineResponse2001Kpi'), require('./model/InlineResponse2001Notes'), require('./model/InlineResponse2001RelatedUrl'), require('./model/InlineResponse2001ReportedBy'), require('./model/InlineResponse2001Section'), require('./model/InlineResponse2002'), require('./model/InlineResponse2002Context'), require('./model/InlineResponse2002Finding'), require('./model/InlineResponse2002FindingDataTransferred'), require('./model/InlineResponse2002FindingNetworkConnection'), require('./model/InlineResponse2002FindingNetworkConnectionClient'), require('./model/InlineResponse2002Kpi'), require('./model/InlineResponse2002Occurrences'), require('./model/InlineResponse2003'), require('./model/InlineResponse200Providers'), require('./model/Kpi'), require('./model/KpiType'), require('./model/KpiValueType'), require('./model/NetworkConnection'), require('./model/NumericCardElement'), require('./model/NumericCardElementValueType'), require('./model/RemediationStep'), require('./model/Reporter'), require('./model/Section'), require('./model/Severity'), require('./model/SocketAddress'), require('./model/TimeSeriesCardElement'), require('./model/ValueType'), require('./api/FindingsGraphApi'), require('./api/FindingsNotesApi'), require('./api/FindingsOccurrencesApi'), require('./api/FindingsProvidersApi'));
   }
-}(function(ApiClient, ApiEmpty, ApiListNoteOccurrencesResponse, ApiListNotesResponse, ApiListOccurrencesResponse, ApiListProvidersResponse, ApiListProvidersResponseInner, ApiNote, ApiNoteKind, ApiNoteRelatedUrl, ApiOccurrence, ApiProvider, Body, Body1, Body2, Body3, BreakdownCardElement, Card, CardElement, Certainty, Context, DataTransferred, Finding, FindingCountValueType, FindingType, InlineResponse200, InlineResponse2001, InlineResponse2001Context, InlineResponse2001Finding, InlineResponse2001FindingDataTransferred, InlineResponse2001FindingNetworkConnection, InlineResponse2001FindingNetworkConnectionClient, InlineResponse2001Kpi, InlineResponse2001Occurrences, InlineResponse2002, InlineResponse200Card, InlineResponse200CardElements, InlineResponse200Finding, InlineResponse200FindingNextSteps, InlineResponse200Kpi, InlineResponse200Notes, InlineResponse200RelatedUrl, InlineResponse200ReportedBy, InlineResponse200Section, Kpi, KpiType, KpiValueType, NetworkConnection, NumericCardElement, NumericCardElementValueType, RemediationStep, Reporter, Section, Severity, SocketAddress, TimeSeriesCardElement, ValueType, FindingsGraphApi, FindingsNotesApi, FindingsOccurrencesApi) {
+}(function(ApiClient, ApiEmpty, ApiListNoteOccurrencesResponse, ApiListNotesResponse, ApiListOccurrencesResponse, ApiListProvidersResponse, ApiNote, ApiNoteKind, ApiNoteRelatedUrl, ApiOccurrence, ApiProvider, Body, Body1, Body2, Body3, BreakdownCardElement, Card, CardElement, Certainty, Context, DataTransferred, Finding, FindingCountValueType, FindingType, InlineResponse200, InlineResponse2001, InlineResponse2001Card, InlineResponse2001CardElements, InlineResponse2001Finding, InlineResponse2001FindingNextSteps, InlineResponse2001Kpi, InlineResponse2001Notes, InlineResponse2001RelatedUrl, InlineResponse2001ReportedBy, InlineResponse2001Section, InlineResponse2002, InlineResponse2002Context, InlineResponse2002Finding, InlineResponse2002FindingDataTransferred, InlineResponse2002FindingNetworkConnection, InlineResponse2002FindingNetworkConnectionClient, InlineResponse2002Kpi, InlineResponse2002Occurrences, InlineResponse2003, InlineResponse200Providers, Kpi, KpiType, KpiValueType, NetworkConnection, NumericCardElement, NumericCardElementValueType, RemediationStep, Reporter, Section, Severity, SocketAddress, TimeSeriesCardElement, ValueType, FindingsGraphApi, FindingsNotesApi, FindingsOccurrencesApi, FindingsProvidersApi) {
   'use strict';
 
   /**
@@ -86,11 +86,6 @@
      * @property {module:model/ApiListProvidersResponse}
      */
     ApiListProvidersResponse: ApiListProvidersResponse,
-    /**
-     * The ApiListProvidersResponseInner model constructor.
-     * @property {module:model/ApiListProvidersResponseInner}
-     */
-    ApiListProvidersResponseInner: ApiListProvidersResponseInner,
     /**
      * The ApiNote model constructor.
      * @property {module:model/ApiNote}
@@ -192,90 +187,100 @@
      */
     InlineResponse2001: InlineResponse2001,
     /**
-     * The InlineResponse2001Context model constructor.
-     * @property {module:model/InlineResponse2001Context}
+     * The InlineResponse2001Card model constructor.
+     * @property {module:model/InlineResponse2001Card}
      */
-    InlineResponse2001Context: InlineResponse2001Context,
+    InlineResponse2001Card: InlineResponse2001Card,
+    /**
+     * The InlineResponse2001CardElements model constructor.
+     * @property {module:model/InlineResponse2001CardElements}
+     */
+    InlineResponse2001CardElements: InlineResponse2001CardElements,
     /**
      * The InlineResponse2001Finding model constructor.
      * @property {module:model/InlineResponse2001Finding}
      */
     InlineResponse2001Finding: InlineResponse2001Finding,
     /**
-     * The InlineResponse2001FindingDataTransferred model constructor.
-     * @property {module:model/InlineResponse2001FindingDataTransferred}
+     * The InlineResponse2001FindingNextSteps model constructor.
+     * @property {module:model/InlineResponse2001FindingNextSteps}
      */
-    InlineResponse2001FindingDataTransferred: InlineResponse2001FindingDataTransferred,
-    /**
-     * The InlineResponse2001FindingNetworkConnection model constructor.
-     * @property {module:model/InlineResponse2001FindingNetworkConnection}
-     */
-    InlineResponse2001FindingNetworkConnection: InlineResponse2001FindingNetworkConnection,
-    /**
-     * The InlineResponse2001FindingNetworkConnectionClient model constructor.
-     * @property {module:model/InlineResponse2001FindingNetworkConnectionClient}
-     */
-    InlineResponse2001FindingNetworkConnectionClient: InlineResponse2001FindingNetworkConnectionClient,
+    InlineResponse2001FindingNextSteps: InlineResponse2001FindingNextSteps,
     /**
      * The InlineResponse2001Kpi model constructor.
      * @property {module:model/InlineResponse2001Kpi}
      */
     InlineResponse2001Kpi: InlineResponse2001Kpi,
     /**
-     * The InlineResponse2001Occurrences model constructor.
-     * @property {module:model/InlineResponse2001Occurrences}
+     * The InlineResponse2001Notes model constructor.
+     * @property {module:model/InlineResponse2001Notes}
      */
-    InlineResponse2001Occurrences: InlineResponse2001Occurrences,
+    InlineResponse2001Notes: InlineResponse2001Notes,
+    /**
+     * The InlineResponse2001RelatedUrl model constructor.
+     * @property {module:model/InlineResponse2001RelatedUrl}
+     */
+    InlineResponse2001RelatedUrl: InlineResponse2001RelatedUrl,
+    /**
+     * The InlineResponse2001ReportedBy model constructor.
+     * @property {module:model/InlineResponse2001ReportedBy}
+     */
+    InlineResponse2001ReportedBy: InlineResponse2001ReportedBy,
+    /**
+     * The InlineResponse2001Section model constructor.
+     * @property {module:model/InlineResponse2001Section}
+     */
+    InlineResponse2001Section: InlineResponse2001Section,
     /**
      * The InlineResponse2002 model constructor.
      * @property {module:model/InlineResponse2002}
      */
     InlineResponse2002: InlineResponse2002,
     /**
-     * The InlineResponse200Card model constructor.
-     * @property {module:model/InlineResponse200Card}
+     * The InlineResponse2002Context model constructor.
+     * @property {module:model/InlineResponse2002Context}
      */
-    InlineResponse200Card: InlineResponse200Card,
+    InlineResponse2002Context: InlineResponse2002Context,
     /**
-     * The InlineResponse200CardElements model constructor.
-     * @property {module:model/InlineResponse200CardElements}
+     * The InlineResponse2002Finding model constructor.
+     * @property {module:model/InlineResponse2002Finding}
      */
-    InlineResponse200CardElements: InlineResponse200CardElements,
+    InlineResponse2002Finding: InlineResponse2002Finding,
     /**
-     * The InlineResponse200Finding model constructor.
-     * @property {module:model/InlineResponse200Finding}
+     * The InlineResponse2002FindingDataTransferred model constructor.
+     * @property {module:model/InlineResponse2002FindingDataTransferred}
      */
-    InlineResponse200Finding: InlineResponse200Finding,
+    InlineResponse2002FindingDataTransferred: InlineResponse2002FindingDataTransferred,
     /**
-     * The InlineResponse200FindingNextSteps model constructor.
-     * @property {module:model/InlineResponse200FindingNextSteps}
+     * The InlineResponse2002FindingNetworkConnection model constructor.
+     * @property {module:model/InlineResponse2002FindingNetworkConnection}
      */
-    InlineResponse200FindingNextSteps: InlineResponse200FindingNextSteps,
+    InlineResponse2002FindingNetworkConnection: InlineResponse2002FindingNetworkConnection,
     /**
-     * The InlineResponse200Kpi model constructor.
-     * @property {module:model/InlineResponse200Kpi}
+     * The InlineResponse2002FindingNetworkConnectionClient model constructor.
+     * @property {module:model/InlineResponse2002FindingNetworkConnectionClient}
      */
-    InlineResponse200Kpi: InlineResponse200Kpi,
+    InlineResponse2002FindingNetworkConnectionClient: InlineResponse2002FindingNetworkConnectionClient,
     /**
-     * The InlineResponse200Notes model constructor.
-     * @property {module:model/InlineResponse200Notes}
+     * The InlineResponse2002Kpi model constructor.
+     * @property {module:model/InlineResponse2002Kpi}
      */
-    InlineResponse200Notes: InlineResponse200Notes,
+    InlineResponse2002Kpi: InlineResponse2002Kpi,
     /**
-     * The InlineResponse200RelatedUrl model constructor.
-     * @property {module:model/InlineResponse200RelatedUrl}
+     * The InlineResponse2002Occurrences model constructor.
+     * @property {module:model/InlineResponse2002Occurrences}
      */
-    InlineResponse200RelatedUrl: InlineResponse200RelatedUrl,
+    InlineResponse2002Occurrences: InlineResponse2002Occurrences,
     /**
-     * The InlineResponse200ReportedBy model constructor.
-     * @property {module:model/InlineResponse200ReportedBy}
+     * The InlineResponse2003 model constructor.
+     * @property {module:model/InlineResponse2003}
      */
-    InlineResponse200ReportedBy: InlineResponse200ReportedBy,
+    InlineResponse2003: InlineResponse2003,
     /**
-     * The InlineResponse200Section model constructor.
-     * @property {module:model/InlineResponse200Section}
+     * The InlineResponse200Providers model constructor.
+     * @property {module:model/InlineResponse200Providers}
      */
-    InlineResponse200Section: InlineResponse200Section,
+    InlineResponse200Providers: InlineResponse200Providers,
     /**
      * The Kpi model constructor.
      * @property {module:model/Kpi}
@@ -355,7 +360,12 @@
      * The FindingsOccurrencesApi service constructor.
      * @property {module:api/FindingsOccurrencesApi}
      */
-    FindingsOccurrencesApi: FindingsOccurrencesApi
+    FindingsOccurrencesApi: FindingsOccurrencesApi,
+    /**
+     * The FindingsProvidersApi service constructor.
+     * @property {module:api/FindingsProvidersApi}
+     */
+    FindingsProvidersApi: FindingsProvidersApi
   };
 
   return exports;

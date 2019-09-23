@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse200Notes = require('./InlineResponse200Notes');
+var InlineResponse2001Notes = require('./InlineResponse2001Notes');
 
 
 
@@ -48,7 +48,7 @@ exports.constructFromObject = function(data, obj) {
     obj = obj || new exports();
 
       if (data.hasOwnProperty('notes')) {
-      obj['notes'] = ApiClient.convertToType(data['notes'], [InlineResponse200Notes]);
+      obj['notes'] = ApiClient.convertToType(data['notes'], [InlineResponse2001Notes]);
     }
       if (data.hasOwnProperty('next_page_token')) {
       obj['next_page_token'] = ApiClient.convertToType(data['next_page_token'], 'String');
@@ -58,7 +58,7 @@ exports.constructFromObject = function(data, obj) {
 }
 
 /**
- * @member {Array.<module:model/InlineResponse200Notes>} notes
+ * @member {Array.<module:model/InlineResponse2001Notes>} notes
  */
 exports.prototype['notes'] = undefined;
 /**

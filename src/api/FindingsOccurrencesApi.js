@@ -16,9 +16,9 @@
 var ApiClient = require('../ApiClient');
 var Body2 = require('../model/Body2');
 var Body3 = require('../model/Body3');
-var InlineResponse2001 = require('../model/InlineResponse2001');
-var InlineResponse2001Occurrences = require('../model/InlineResponse2001Occurrences');
 var InlineResponse2002 = require('../model/InlineResponse2002');
+var InlineResponse2002Occurrences = require('../model/InlineResponse2002Occurrences');
+var InlineResponse2003 = require('../model/InlineResponse2003');
 
 /**
  * FindingsOccurrences service.
@@ -45,7 +45,7 @@ module.exports = function(apiClient) {
    * @param {module:model/Body2} body Body for Occurence creation
    * @param {Object} opts Optional parameters
    * @param {Boolean} opts.replaceIfExists It allows replacing an existing occurrence when set to true.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001Occurrences} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002Occurrences} and HTTP response
    */
   this.createOccurrenceWithHttpInfo = function(accountId, authorization, providerId, body, opts) {
     opts = opts || {};
@@ -89,7 +89,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse2001Occurrences;
+    var returnType = InlineResponse2002Occurrences;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/occurrences', 'POST',
@@ -106,7 +106,7 @@ module.exports = function(apiClient) {
    * @param {module:model/Body2} body Body for Occurence creation
    * @param {Object} opts Optional parameters
    * @param {Boolean} opts.replaceIfExists It allows replacing an existing occurrence when set to true.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001Occurrences}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002Occurrences}
    */
   this.createOccurrence = function(accountId, authorization, providerId, body, opts) {
     return this.createOccurrenceWithHttpInfo(accountId, authorization, providerId, body, opts)
@@ -196,7 +196,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId First part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {String} occurrenceId Second part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
    */
   this.getOccurrenceWithHttpInfo = function(accountId, authorization, providerId, occurrenceId) {
     var postBody = null;
@@ -239,7 +239,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse2001;
+    var returnType = InlineResponse2002;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id}', 'GET',
@@ -254,7 +254,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId First part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {String} occurrenceId Second part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
    */
   this.getOccurrence = function(accountId, authorization, providerId, occurrenceId) {
     return this.getOccurrenceWithHttpInfo(accountId, authorization, providerId, occurrenceId)
@@ -273,7 +273,7 @@ module.exports = function(apiClient) {
    * @param {Object} opts Optional parameters
    * @param {Number} opts.pageSize Number of notes to return in the list.
    * @param {String} opts.pageToken Token to provide to skip to a particular spot in the list.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2003} and HTTP response
    */
   this.listNoteOccurrencesWithHttpInfo = function(accountId, authorization, providerId, noteId, opts) {
     opts = opts || {};
@@ -319,7 +319,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse2002;
+    var returnType = InlineResponse2003;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/notes/{note_id}/occurrences', 'GET',
@@ -337,7 +337,7 @@ module.exports = function(apiClient) {
    * @param {Object} opts Optional parameters
    * @param {Number} opts.pageSize Number of notes to return in the list.
    * @param {String} opts.pageToken Token to provide to skip to a particular spot in the list.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2003}
    */
   this.listNoteOccurrences = function(accountId, authorization, providerId, noteId, opts) {
     return this.listNoteOccurrencesWithHttpInfo(accountId, authorization, providerId, noteId, opts)
@@ -355,7 +355,7 @@ module.exports = function(apiClient) {
    * @param {Object} opts Optional parameters
    * @param {Number} opts.pageSize Number of occurrences to return in the list.
    * @param {String} opts.pageToken Token to provide to skip to a particular spot in the list.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
    */
   this.listOccurrencesWithHttpInfo = function(accountId, authorization, providerId, opts) {
     opts = opts || {};
@@ -395,7 +395,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse2001;
+    var returnType = InlineResponse2002;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/occurrences', 'GET',
@@ -412,7 +412,7 @@ module.exports = function(apiClient) {
    * @param {Object} opts Optional parameters
    * @param {Number} opts.pageSize Number of occurrences to return in the list.
    * @param {String} opts.pageToken Token to provide to skip to a particular spot in the list.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
    */
   this.listOccurrences = function(accountId, authorization, providerId, opts) {
     return this.listOccurrencesWithHttpInfo(accountId, authorization, providerId, opts)
@@ -429,7 +429,7 @@ module.exports = function(apiClient) {
    * @param {String} providerId First part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {String} occurrenceId Second part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {module:model/Body3} body Body for Occurence updation
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001Occurrences} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002Occurrences} and HTTP response
    */
   this.updateOccurrenceWithHttpInfo = function(accountId, authorization, providerId, occurrenceId, body) {
     var postBody = body;
@@ -477,7 +477,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse2001Occurrences;
+    var returnType = InlineResponse2002Occurrences;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id}', 'PUT',
@@ -493,7 +493,7 @@ module.exports = function(apiClient) {
    * @param {String} providerId First part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {String} occurrenceId Second part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {module:model/Body3} body Body for Occurence updation
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001Occurrences}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002Occurrences}
    */
   this.updateOccurrence = function(accountId, authorization, providerId, occurrenceId, body) {
     return this.updateOccurrenceWithHttpInfo(accountId, authorization, providerId, occurrenceId, body)

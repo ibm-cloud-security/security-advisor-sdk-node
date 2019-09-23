@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse200Notes = require('./InlineResponse200Notes');
+var InlineResponse200Providers = require('./InlineResponse200Providers');
 
 
 
@@ -25,13 +25,12 @@ var InlineResponse200Notes = require('./InlineResponse200Notes');
 
 /**
  * Constructs a new <code>InlineResponse200</code>.
- * Response including listed notes.
+ * Response including listed providers
  * @alias module:model/InlineResponse200
  * @class
  */
 var exports = function() {
   var _this = this;
-
 
 
 };
@@ -47,25 +46,17 @@ exports.constructFromObject = function(data, obj) {
   if (data) {
     obj = obj || new exports();
 
-      if (data.hasOwnProperty('notes')) {
-      obj['notes'] = ApiClient.convertToType(data['notes'], [InlineResponse200Notes]);
-    }
-      if (data.hasOwnProperty('next_page_token')) {
-      obj['next_page_token'] = ApiClient.convertToType(data['next_page_token'], 'String');
+      if (data.hasOwnProperty('providers')) {
+      obj['providers'] = ApiClient.convertToType(data['providers'], [InlineResponse200Providers]);
     }
     }
   return obj;
 }
 
 /**
- * @member {Array.<module:model/InlineResponse200Notes>} notes
+ * @member {Array.<module:model/InlineResponse200Providers>} providers
  */
-exports.prototype['notes'] = undefined;
-/**
- * The next pagination token in the list response. It should be used as page_token for the following request. An empty value means no more result.
- * @member {String} next_page_token
- */
-exports.prototype['next_page_token'] = undefined;
+exports.prototype['providers'] = undefined;
 
 
 

@@ -14,12 +14,12 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse200Card = require('./InlineResponse200Card');
-var InlineResponse200Finding = require('./InlineResponse200Finding');
-var InlineResponse200Kpi = require('./InlineResponse200Kpi');
-var InlineResponse200RelatedUrl = require('./InlineResponse200RelatedUrl');
-var InlineResponse200ReportedBy = require('./InlineResponse200ReportedBy');
-var InlineResponse200Section = require('./InlineResponse200Section');
+var InlineResponse2001Card = require('./InlineResponse2001Card');
+var InlineResponse2001Finding = require('./InlineResponse2001Finding');
+var InlineResponse2001Kpi = require('./InlineResponse2001Kpi');
+var InlineResponse2001RelatedUrl = require('./InlineResponse2001RelatedUrl');
+var InlineResponse2001ReportedBy = require('./InlineResponse2001ReportedBy');
+var InlineResponse2001Section = require('./InlineResponse2001Section');
 
 
 
@@ -37,7 +37,7 @@ var InlineResponse200Section = require('./InlineResponse200Section');
  * @param longDescription {String} A detailed description of this `Note`.
  * @param kind {module:model/Body.KindEnum} This must be 1&#58;1 with members of our oneofs, it can be used for filtering Note and Occurrence on their kind.  - FINDING&#58; The note and occurrence represent a finding.  - KPI&#58; The note and occurrence represent a KPI value.  - CARD&#58; The note represents a card showing findings and related metric values.  - CARD_CONFIGURED&#58; The note represents a card configured for a user account.  - SECTION&#58; The note represents a section in a dashboard.
  * @param id {String} 
- * @param reportedBy {module:model/InlineResponse200ReportedBy} 
+ * @param reportedBy {module:model/InlineResponse2001ReportedBy} 
  */
 var exports = function(shortDescription, longDescription, kind, id, reportedBy) {
   var _this = this;
@@ -84,7 +84,7 @@ exports.constructFromObject = function(data, obj) {
       obj['kind'] = ApiClient.convertToType(data['kind'], 'String');
     }
       if (data.hasOwnProperty('related_url')) {
-      obj['related_url'] = ApiClient.convertToType(data['related_url'], [InlineResponse200RelatedUrl]);
+      obj['related_url'] = ApiClient.convertToType(data['related_url'], [InlineResponse2001RelatedUrl]);
     }
       if (data.hasOwnProperty('expiration_time')) {
       obj['expiration_time'] = ApiClient.convertToType(data['expiration_time'], 'Date');
@@ -105,19 +105,19 @@ exports.constructFromObject = function(data, obj) {
       obj['shared'] = ApiClient.convertToType(data['shared'], 'Boolean');
     }
       if (data.hasOwnProperty('reported_by')) {
-      obj['reported_by'] = InlineResponse200ReportedBy.constructFromObject(data['reported_by']);
+      obj['reported_by'] = InlineResponse2001ReportedBy.constructFromObject(data['reported_by']);
     }
       if (data.hasOwnProperty('finding')) {
-      obj['finding'] = InlineResponse200Finding.constructFromObject(data['finding']);
+      obj['finding'] = InlineResponse2001Finding.constructFromObject(data['finding']);
     }
       if (data.hasOwnProperty('kpi')) {
-      obj['kpi'] = InlineResponse200Kpi.constructFromObject(data['kpi']);
+      obj['kpi'] = InlineResponse2001Kpi.constructFromObject(data['kpi']);
     }
       if (data.hasOwnProperty('card')) {
-      obj['card'] = InlineResponse200Card.constructFromObject(data['card']);
+      obj['card'] = InlineResponse2001Card.constructFromObject(data['card']);
     }
       if (data.hasOwnProperty('section')) {
-      obj['section'] = InlineResponse200Section.constructFromObject(data['section']);
+      obj['section'] = InlineResponse2001Section.constructFromObject(data['section']);
     }
     }
   return obj;
@@ -143,7 +143,7 @@ exports.prototype['long_description'] = undefined;
  */
 exports.prototype['kind'] = undefined;
 /**
- * @member {Array.<module:model/InlineResponse200RelatedUrl>} related_url
+ * @member {Array.<module:model/InlineResponse2001RelatedUrl>} related_url
  */
 exports.prototype['related_url'] = undefined;
 /**
@@ -176,23 +176,23 @@ exports.prototype['id'] = undefined;
  */
 exports.prototype['shared'] = true;
 /**
- * @member {module:model/InlineResponse200ReportedBy} reported_by
+ * @member {module:model/InlineResponse2001ReportedBy} reported_by
  */
 exports.prototype['reported_by'] = undefined;
 /**
- * @member {module:model/InlineResponse200Finding} finding
+ * @member {module:model/InlineResponse2001Finding} finding
  */
 exports.prototype['finding'] = undefined;
 /**
- * @member {module:model/InlineResponse200Kpi} kpi
+ * @member {module:model/InlineResponse2001Kpi} kpi
  */
 exports.prototype['kpi'] = undefined;
 /**
- * @member {module:model/InlineResponse200Card} card
+ * @member {module:model/InlineResponse2001Card} card
  */
 exports.prototype['card'] = undefined;
 /**
- * @member {module:model/InlineResponse200Section} section
+ * @member {module:model/InlineResponse2001Section} section
  */
 exports.prototype['section'] = undefined;
 

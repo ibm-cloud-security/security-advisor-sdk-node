@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var ApiListProvidersResponseInner = require('./ApiListProvidersResponseInner');
+var InlineResponse200Providers = require('./InlineResponse200Providers');
 
 
 
@@ -28,14 +28,11 @@ var ApiListProvidersResponseInner = require('./ApiListProvidersResponseInner');
  * Response including listed providers
  * @alias module:model/ApiListProvidersResponse
  * @class
- * @extends Array
  */
 var exports = function() {
   var _this = this;
-  _this = new Array();
-  Object.setPrototypeOf(_this, exports);
 
-  return _this;
+
 };
 
 /**
@@ -48,12 +45,18 @@ var exports = function() {
 exports.constructFromObject = function(data, obj) {
   if (data) {
     obj = obj || new exports();
-      ApiClient.constructFromObject(data, obj, 'ApiListProvidersResponseInner');
 
+      if (data.hasOwnProperty('providers')) {
+      obj['providers'] = ApiClient.convertToType(data['providers'], [InlineResponse200Providers]);
+    }
     }
   return obj;
 }
 
+/**
+ * @member {Array.<module:model/InlineResponse200Providers>} providers
+ */
+exports.prototype['providers'] = undefined;
 
 
 

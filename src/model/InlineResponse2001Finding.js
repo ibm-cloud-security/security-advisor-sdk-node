@@ -14,9 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse2001FindingDataTransferred = require('./InlineResponse2001FindingDataTransferred');
-var InlineResponse2001FindingNetworkConnection = require('./InlineResponse2001FindingNetworkConnection');
-var InlineResponse200FindingNextSteps = require('./InlineResponse200FindingNextSteps');
+var InlineResponse2001FindingNextSteps = require('./InlineResponse2001FindingNextSteps');
 
 
 
@@ -27,17 +25,15 @@ var InlineResponse200FindingNextSteps = require('./InlineResponse200FindingNextS
 
 /**
  * Constructs a new <code>InlineResponse2001Finding</code>.
- * Finding provides details about a finding occurrence.
+ * FindingType provides details about a finding note.
  * @alias module:model/InlineResponse2001Finding
  * @class
+ * @param severity {module:model/InlineResponse2001Finding.SeverityEnum} Note provider-assigned severity/impact ranking - LOW&#58; Low Impact - MEDIUM&#58; Medium Impact - HIGH&#58; High Impact
  */
-var exports = function() {
+var exports = function(severity) {
   var _this = this;
 
-
-
-
-
+  _this['severity'] = severity;
 
 };
 
@@ -55,17 +51,8 @@ exports.constructFromObject = function(data, obj) {
       if (data.hasOwnProperty('severity')) {
       obj['severity'] = ApiClient.convertToType(data['severity'], 'String');
     }
-      if (data.hasOwnProperty('certainty')) {
-      obj['certainty'] = ApiClient.convertToType(data['certainty'], 'String');
-    }
       if (data.hasOwnProperty('next_steps')) {
-      obj['next_steps'] = ApiClient.convertToType(data['next_steps'], [InlineResponse200FindingNextSteps]);
-    }
-      if (data.hasOwnProperty('network_connection')) {
-      obj['network_connection'] = InlineResponse2001FindingNetworkConnection.constructFromObject(data['network_connection']);
-    }
-      if (data.hasOwnProperty('data_transferred')) {
-      obj['data_transferred'] = InlineResponse2001FindingDataTransferred.constructFromObject(data['data_transferred']);
+      obj['next_steps'] = ApiClient.convertToType(data['next_steps'], [InlineResponse2001FindingNextSteps]);
     }
     }
   return obj;
@@ -77,23 +64,10 @@ exports.constructFromObject = function(data, obj) {
  */
 exports.prototype['severity'] = undefined;
 /**
- * Note provider-assigned confidence on the validity of an occurrence - LOW&#58; Low Certainty - MEDIUM&#58; Medium Certainty - HIGH&#58; High Certainty
- * @member {module:model/InlineResponse2001Finding.CertaintyEnum} certainty
- */
-exports.prototype['certainty'] = undefined;
-/**
- * Remediation steps for the issues reported in this finding. They override the note's next steps.
- * @member {Array.<module:model/InlineResponse200FindingNextSteps>} next_steps
+ * Common remediation steps for the finding of this type
+ * @member {Array.<module:model/InlineResponse2001FindingNextSteps>} next_steps
  */
 exports.prototype['next_steps'] = undefined;
-/**
- * @member {module:model/InlineResponse2001FindingNetworkConnection} network_connection
- */
-exports.prototype['network_connection'] = undefined;
-/**
- * @member {module:model/InlineResponse2001FindingDataTransferred} data_transferred
- */
-exports.prototype['data_transferred'] = undefined;
 
 
   /**
@@ -102,27 +76,6 @@ exports.prototype['data_transferred'] = undefined;
    * @readonly
    */
   exports.SeverityEnum = {
-    /**
-     * value: "LOW"
-     * @const
-     */
-    "LOW": "LOW",
-    /**
-     * value: "MEDIUM"
-     * @const
-     */
-    "MEDIUM": "MEDIUM",
-    /**
-     * value: "HIGH"
-     * @const
-     */
-    "HIGH": "HIGH"  };
-  /**
-   * Allowed values for the <code>certainty</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.CertaintyEnum = {
     /**
      * value: "LOW"
      * @const

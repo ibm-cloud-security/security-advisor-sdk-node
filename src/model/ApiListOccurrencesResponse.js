@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse2001Occurrences = require('./InlineResponse2001Occurrences');
+var InlineResponse2002Occurrences = require('./InlineResponse2002Occurrences');
 
 
 
@@ -48,7 +48,7 @@ exports.constructFromObject = function(data, obj) {
     obj = obj || new exports();
 
       if (data.hasOwnProperty('occurrences')) {
-      obj['occurrences'] = ApiClient.convertToType(data['occurrences'], [InlineResponse2001Occurrences]);
+      obj['occurrences'] = ApiClient.convertToType(data['occurrences'], [InlineResponse2002Occurrences]);
     }
       if (data.hasOwnProperty('next_page_token')) {
       obj['next_page_token'] = ApiClient.convertToType(data['next_page_token'], 'String');
@@ -59,7 +59,7 @@ exports.constructFromObject = function(data, obj) {
 
 /**
  * The occurrences requested.
- * @member {Array.<module:model/InlineResponse2001Occurrences>} occurrences
+ * @member {Array.<module:model/InlineResponse2002Occurrences>} occurrences
  */
 exports.prototype['occurrences'] = undefined;
 /**

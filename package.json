@@ -26,6 +26,7 @@
     "test": "mocha --recursive"
   },
   "dependencies": {
+    "expect": "^24.9.0",
     "superagent": "5.1.0"
   },
   "devDependencies": {

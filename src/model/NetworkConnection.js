@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse2001FindingNetworkConnectionClient = require('./InlineResponse2001FindingNetworkConnectionClient');
+var InlineResponse2002FindingNetworkConnectionClient = require('./InlineResponse2002FindingNetworkConnectionClient');
 
 
 
@@ -56,10 +56,10 @@ exports.constructFromObject = function(data, obj) {
       obj['protocol'] = ApiClient.convertToType(data['protocol'], 'String');
     }
       if (data.hasOwnProperty('client')) {
-      obj['client'] = InlineResponse2001FindingNetworkConnectionClient.constructFromObject(data['client']);
+      obj['client'] = InlineResponse2002FindingNetworkConnectionClient.constructFromObject(data['client']);
     }
       if (data.hasOwnProperty('server')) {
-      obj['server'] = InlineResponse2001FindingNetworkConnectionClient.constructFromObject(data['server']);
+      obj['server'] = InlineResponse2002FindingNetworkConnectionClient.constructFromObject(data['server']);
     }
     }
   return obj;
@@ -76,11 +76,11 @@ exports.prototype['direction'] = undefined;
  */
 exports.prototype['protocol'] = undefined;
 /**
- * @member {module:model/InlineResponse2001FindingNetworkConnectionClient} client
+ * @member {module:model/InlineResponse2002FindingNetworkConnectionClient} client
  */
 exports.prototype['client'] = undefined;
 /**
- * @member {module:model/InlineResponse2001FindingNetworkConnectionClient} server
+ * @member {module:model/InlineResponse2002FindingNetworkConnectionClient} server
  */
 exports.prototype['server'] = undefined;
 

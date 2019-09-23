@@ -16,8 +16,8 @@
 var ApiClient = require('../ApiClient');
 var Body = require('../model/Body');
 var Body1 = require('../model/Body1');
-var InlineResponse200 = require('../model/InlineResponse200');
-var InlineResponse200Notes = require('../model/InlineResponse200Notes');
+var InlineResponse2001 = require('../model/InlineResponse2001');
+var InlineResponse2001Notes = require('../model/InlineResponse2001Notes');
 
 /**
  * FindingsNotes service.
@@ -42,7 +42,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId Part of &#x60;parent&#x60;. This field contains the provider_id for example: providers/{provider_id}
    * @param {module:model/Body} body Body for Note creation
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200Notes} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001Notes} and HTTP response
    */
   this.createNoteWithHttpInfo = function(accountId, authorization, providerId, body) {
     var postBody = body;
@@ -84,7 +84,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse200Notes;
+    var returnType = InlineResponse2001Notes;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/notes', 'POST',
@@ -99,7 +99,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId Part of &#x60;parent&#x60;. This field contains the provider_id for example: providers/{provider_id}
    * @param {module:model/Body} body Body for Note creation
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200Notes}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001Notes}
    */
   this.createNote = function(accountId, authorization, providerId, body) {
     return this.createNoteWithHttpInfo(accountId, authorization, providerId, body)
@@ -189,7 +189,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId First part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
    * @param {String} noteId Second part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200Notes} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001Notes} and HTTP response
    */
   this.getNoteWithHttpInfo = function(accountId, authorization, providerId, noteId) {
     var postBody = null;
@@ -232,7 +232,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse200Notes;
+    var returnType = InlineResponse2001Notes;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/notes/{note_id}', 'GET',
@@ -247,7 +247,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId First part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
    * @param {String} noteId Second part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200Notes}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001Notes}
    */
   this.getNote = function(accountId, authorization, providerId, noteId) {
     return this.getNoteWithHttpInfo(accountId, authorization, providerId, noteId)
@@ -263,7 +263,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId First part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {String} occurrenceId Second part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200Notes} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001Notes} and HTTP response
    */
   this.getOccurrenceNoteWithHttpInfo = function(accountId, authorization, providerId, occurrenceId) {
     var postBody = null;
@@ -306,7 +306,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse200Notes;
+    var returnType = InlineResponse2001Notes;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id}/note', 'GET',
@@ -321,7 +321,7 @@ module.exports = function(apiClient) {
    * @param {String} authorization The Identity &amp; Access Management (IAM) Bearer token.
    * @param {String} providerId First part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
    * @param {String} occurrenceId Second part of occurrence &#x60;name&#x60;: providers/{provider_id}/occurrences/{occurrence_id}
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200Notes}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001Notes}
    */
   this.getOccurrenceNote = function(accountId, authorization, providerId, occurrenceId) {
     return this.getOccurrenceNoteWithHttpInfo(accountId, authorization, providerId, occurrenceId)
@@ -339,7 +339,7 @@ module.exports = function(apiClient) {
    * @param {Object} opts Optional parameters
    * @param {Number} opts.pageSize Number of notes to return in the list.
    * @param {String} opts.pageToken Token to provide to skip to a particular spot in the list.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001} and HTTP response
    */
   this.listNotesWithHttpInfo = function(accountId, authorization, providerId, opts) {
     opts = opts || {};
@@ -379,7 +379,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse200;
+    var returnType = InlineResponse2001;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/notes', 'GET',
@@ -396,7 +396,7 @@ module.exports = function(apiClient) {
    * @param {Object} opts Optional parameters
    * @param {Number} opts.pageSize Number of notes to return in the list.
    * @param {String} opts.pageToken Token to provide to skip to a particular spot in the list.
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001}
    */
   this.listNotes = function(accountId, authorization, providerId, opts) {
     return this.listNotesWithHttpInfo(accountId, authorization, providerId, opts)
@@ -413,7 +413,7 @@ module.exports = function(apiClient) {
    * @param {String} providerId First part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
    * @param {String} noteId Second part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
    * @param {module:model/Body1} body Body for Note updation
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200Notes} and HTTP response
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001Notes} and HTTP response
    */
   this.updateNoteWithHttpInfo = function(accountId, authorization, providerId, noteId, body) {
     var postBody = body;
@@ -461,7 +461,7 @@ module.exports = function(apiClient) {
     var authNames = ['UserMin'];
     var contentTypes = ['application/json'];
     var accepts = ['application/json'];
-    var returnType = InlineResponse200Notes;
+    var returnType = InlineResponse2001Notes;
 
     return this.apiClient.callApi(
       '/v1/{account_id}/providers/{provider_id}/notes/{note_id}', 'PUT',
@@ -477,7 +477,7 @@ module.exports = function(apiClient) {
    * @param {String} providerId First part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
    * @param {String} noteId Second part of note &#x60;name&#x60;: providers/{provider_id}/notes/{note_id}
    * @param {module:model/Body1} body Body for Note updation
-   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200Notes}
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001Notes}
    */
   this.updateNote = function(accountId, authorization, providerId, noteId, body) {
     return this.updateNoteWithHttpInfo(accountId, authorization, providerId, noteId, body)

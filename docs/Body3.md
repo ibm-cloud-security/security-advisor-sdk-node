@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **update_time** | **Date** | Output only. The time this &#x60;Occurrence&#x60; was last updated. | [optional] 
 **provider_id** | **String** |  | [optional] 
 **id** | **String** |  | 
-**context** | [**InlineResponse2001Context**](InlineResponse2001Context.md) |  | [optional] 
-**finding** | [**InlineResponse2001Finding**](InlineResponse2001Finding.md) |  | [optional] 
-**kpi** | [**InlineResponse2001Kpi**](InlineResponse2001Kpi.md) |  | [optional] 
+**context** | [**InlineResponse2002Context**](InlineResponse2002Context.md) |  | [optional] 
+**finding** | [**InlineResponse2002Finding**](InlineResponse2002Finding.md) |  | [optional] 
+**kpi** | [**InlineResponse2002Kpi**](InlineResponse2002Kpi.md) |  | [optional] 
 
 
 <a name="KindEnum"></a>

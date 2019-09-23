@@ -14,7 +14,7 @@
  */
 
 var ApiClient = require('../ApiClient');
-var InlineResponse2001Occurrences = require('./InlineResponse2001Occurrences');
+var InlineResponse2001Notes = require('./InlineResponse2001Notes');
 
 
 
@@ -25,7 +25,7 @@ var InlineResponse2001Occurrences = require('./InlineResponse2001Occurrences');
 
 /**
  * Constructs a new <code>InlineResponse2001</code>.
- * Response including listed active occurrences.
+ * Response including listed notes.
  * @alias module:model/InlineResponse2001
  * @class
  */
@@ -47,8 +47,8 @@ exports.constructFromObject = function(data, obj) {
   if (data) {
     obj = obj || new exports();
 
-      if (data.hasOwnProperty('occurrences')) {
-      obj['occurrences'] = ApiClient.convertToType(data['occurrences'], [InlineResponse2001Occurrences]);
+      if (data.hasOwnProperty('notes')) {
+      obj['notes'] = ApiClient.convertToType(data['notes'], [InlineResponse2001Notes]);
     }
       if (data.hasOwnProperty('next_page_token')) {
       obj['next_page_token'] = ApiClient.convertToType(data['next_page_token'], 'String');
@@ -58,12 +58,11 @@ exports.constructFromObject = function(data, obj) {
 }
 
 /**
- * The occurrences requested.
- * @member {Array.<module:model/InlineResponse2001Occurrences>} occurrences
+ * @member {Array.<module:model/InlineResponse2001Notes>} notes
  */
-exports.prototype['occurrences'] = undefined;
+exports.prototype['notes'] = undefined;
 /**
- * The next pagination token in the list response. It should be used as `page_token` for the following request. An empty value means no more results.
+ * The next pagination token in the list response. It should be used as page_token for the following request. An empty value means no more result.
  * @member {String} next_page_token
  */
 exports.prototype['next_page_token'] = undefined;

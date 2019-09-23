@@ -35,14 +35,24 @@ var exports = function() {
    * @default https://localhost/findings
    */
   this.basePath = 'https://localhost/findings'.replace(/\/+$/, '');
+  /**
+   * The maximum time to retry in case of network errors etc
+   * @type {int}
+   */
+ this.maxRetry = 3
 
+  /**
+   * The function to override the default retry check
+   * @type {Function}
+   */
+ this.retryFn = (err, res) => {
+  if (res && res.status && res.status >= 500 && res.status !== 501) return true;
+}
   /**
    * The authentication methods to be included for all API calls.
    * @type {Array.<String>}
    */
     this.authentications = {
-    'Service': {type: 'apiKey', 'in': 'header', name: 'Authorization'},
-    'User': {type: 'apiKey', 'in': 'header', name: 'Authorization'},
     'UserMin': {type: 'apiKey', 'in': 'header', name: 'Authorization'}
   };
   /**
