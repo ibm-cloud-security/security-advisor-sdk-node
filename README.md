@@ -1,154 +1,258 @@
-# IBM Cloud Security Advisor Findings API Node SDK
+# IBM Cloud Security Advisor Node.js SDK
 
-Findings API is supported in the following regions:
-* [Dallas](https://us-south.secadvisor.cloud.ibm.com/findings/v1/docs)
-* [London](https://eu-gb.secadvisor.cloud.ibm.com/findings/v1/docs)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-## Requirements
+Node JS client library to use the IBM Cloud Security Advisor APIs.
 
-Node.js 6.4.0 or later
+<details>
+<summary>Table of Contents</summary>
+
+* [Overview](#overview)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Authentication](#authentication)
+* [Using the SDK](#using-the-sdk)
+  * [Basic Usage](#basic-usage)
+  * [Setting the Service URL](#setting-the-service-url)
+  * [Sending request headers](#sending-request-headers)
+* [Configuring the HTTPS Agent](#configuring-the-https-agent)
+  * [Use behind a corporate proxy](#use-behind-a-corporate-proxy)
+  * [Sending custom certificates](#sending-custom-certificates)
+  * [Disabling SSL Verification](#disabling-ssl-verification---discouraged)
+* [Documentation](#documentation)
+* [Questions](#questions)
+* [Debug](#debug)
+* [Tests](#tests)
+* [Open Source @ IBM](#open-source--ibm)
+* [Contributing](#contributing)
+* [Featured Projects](#featured-projects)
+* [License](#license)
+</details>
+
+## Overview
+
+The IBM Cloud Security Advisor Node SDK allows developers to programmatically interact with the IBM Cloud Security Advisor Service.
+
+## Prerequisites
+- You need an [IBM Cloud][ibm-cloud-onboarding] account.
+
+- **Node >=10**: This SDK is tested with Node versions 10 and up. It may work on previous versions but this is not officially supported.
 
 ## Installation
 
-### For [Node.js](https://nodejs.org/)
-
-To install the SDK:
-
-```shell
-npm install ibmcloud-security-advisor-findings --save
+```sh
+npm install ibm-security-advisor
 ```
 
-Install from a tagged release, for example, v1.0.0
-```shell
-npm install ibm-cloud-security/security-advisor-findings-sdk-nodejs#v1.0.0
-```
+## Authentication
 
-## Getting Started
+IBM Cloud Security Advisor service uses token-based Identity and Access Management (IAM) authentication.
 
-Please follow the [installation](#installation) instruction and execute the following JS code:
+IAM authentication uses a service API key to get an access token that is passed with the call.
+Access tokens are valid for a limited amount of time and must be regenerated.
 
-```javascript
-var findings = require('ibmcloud-security-advisor-findings');
-var defaultClient = findings.ApiClient.instance;
-defaultClient.basePath = "https://us-south.secadvisor.cloud.ibm.com/findings"
-let apiInstance = new findings.FindingsNotesApi();
-let accountId = "accountId_example";
-let authorization = "authorization_example";
-let providerId = "providerId_example";
+Authentication is accomplished using dedicated Authenticators for each authentication scheme. Import authenticators from `ibm-security-advisor/auth`.
 
-apiInstance.listNotes(accountId, authorization, providerId).then((data) => {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-}, (error) => {
-  console.error(error);
+### Examples
+#### Programmatic credentials
+```js
+import { IamAuthenticator } from 'ibm-security-advisor/auth';
+
+const authenticator = new IamAuthenticator({
+  apikey: '{apikey}',
 });
 ```
 
-To target different regions set the `basePath` on the client instance accordingly:
-* Dallas - `https://us-south.secadvisor.cloud.ibm.com/findings`
-* London - `https://eu-gb.secadvisor.cloud.ibm.com/findings`
+#### External configuration
+```js
+import { getAuthenticatorFromEnvironment } from 'ibm-security-advisor/auth';
 
-## Generating Authorization token
-
-`Authorization token` to be passed as second paramters in all the function calls is obtained by calling [IBM Cloud IAM API](https://cloud.ibm.com/apidocs/iam-identity-token-api). It is a bearer token in JWT format.
-Find a sample [here](https://cloud.ibm.com/apidocs/security-advisor/findings#authentication). Read more about the access [here](https://cloud.ibm.com/docs/security-advisor?topic=security-advisor-service-access)
-
-
-## Documentation for API Endpoints
-
-All URIs are relative to:
-
-* https://us-south.secadvisor.cloud.ibm.com/findings
-* https://eu-gb.secadvisor.cloud.ibm.com/findings
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*findings.FindingsGraphApi* | [**postGraph**](docs/FindingsGraphApi.md#postGraph) | **POST** /v1/{account_id}/graph | query findings
-*findings.FindingsNotesApi* | [**createNote**](docs/FindingsNotesApi.md#createNote) | **POST** /v1/{account_id}/providers/{provider_id}/notes | Creates a new &#x60;Note&#x60;.
-*findings.FindingsNotesApi* | [**deleteNote**](docs/FindingsNotesApi.md#deleteNote) | **DELETE** /v1/{account_id}/providers/{provider_id}/notes/{note_id} | Deletes the given &#x60;Note&#x60; from the system.
-*findings.FindingsNotesApi* | [**getNote**](docs/FindingsNotesApi.md#getNote) | **GET** /v1/{account_id}/providers/{provider_id}/notes/{note_id} | Returns the requested &#x60;Note&#x60;.
-*findings.FindingsNotesApi* | [**getOccurrenceNote**](docs/FindingsNotesApi.md#getOccurrenceNote) | **GET** /v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id}/note | Gets the &#x60;Note&#x60; attached to the given &#x60;Occurrence&#x60;.
-*findings.FindingsNotesApi* | [**listNotes**](docs/FindingsNotesApi.md#listNotes) | **GET** /v1/{account_id}/providers/{provider_id}/notes | Lists all &#x60;Notes&#x60; for a given provider.
-*findings.FindingsNotesApi* | [**updateNote**](docs/FindingsNotesApi.md#updateNote) | **PUT** /v1/{account_id}/providers/{provider_id}/notes/{note_id} | Updates an existing &#x60;Note&#x60;.
-*findings.FindingsOccurrencesApi* | [**createOccurrence**](docs/FindingsOccurrencesApi.md#createOccurrence) | **POST** /v1/{account_id}/providers/{provider_id}/occurrences | Creates a new &#x60;Occurrence&#x60;. Use this method to create &#x60;Occurrences&#x60; for a resource.
-*findings.FindingsOccurrencesApi* | [**deleteOccurrence**](docs/FindingsOccurrencesApi.md#deleteOccurrence) | **DELETE** /v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id} | Deletes the given &#x60;Occurrence&#x60; from the system.
-*findings.FindingsOccurrencesApi* | [**getOccurrence**](docs/FindingsOccurrencesApi.md#getOccurrence) | **GET** /v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id} | Returns the requested &#x60;Occurrence&#x60;.
-*findings.FindingsOccurrencesApi* | [**listNoteOccurrences**](docs/FindingsOccurrencesApi.md#listNoteOccurrences) | **GET** /v1/{account_id}/providers/{provider_id}/notes/{note_id}/occurrences | Lists &#x60;Occurrences&#x60; referencing the specified &#x60;Note&#x60;. Use this method to get all occurrences referencing your &#x60;Note&#x60; across all your customer providers.
-*findings.FindingsOccurrencesApi* | [**listOccurrences**](docs/FindingsOccurrencesApi.md#listOccurrences) | **GET** /v1/{account_id}/providers/{provider_id}/occurrences | Lists active &#x60;Occurrences&#x60; for a given provider matching the filters.
-*findings.FindingsOccurrencesApi* | [**updateOccurrence**](docs/FindingsOccurrencesApi.md#updateOccurrence) | **PUT** /v1/{account_id}/providers/{provider_id}/occurrences/{occurrence_id} | Updates an existing &#x60;Occurrence&#x60;.
-
-
-## Documentation for Models
-
- - [findings.ApiEmpty](docs/ApiEmpty.md)
- - [findings.ApiListNoteOccurrencesResponse](docs/ApiListNoteOccurrencesResponse.md)
- - [findings.ApiListNotesResponse](docs/ApiListNotesResponse.md)
- - [findings.ApiListOccurrencesResponse](docs/ApiListOccurrencesResponse.md)
- - [findings.ApiListProvidersResponse](docs/ApiListProvidersResponse.md)
- - [findings.ApiListProvidersResponseInner](docs/ApiListProvidersResponseInner.md)
- - [findings.ApiNote](docs/ApiNote.md)
- - [findings.ApiNoteKind](docs/ApiNoteKind.md)
- - [findings.ApiNoteRelatedUrl](docs/ApiNoteRelatedUrl.md)
- - [findings.ApiOccurrence](docs/ApiOccurrence.md)
- - [findings.ApiProvider](docs/ApiProvider.md)
- - [findings.Body](docs/Body.md)
- - [findings.Body1](docs/Body1.md)
- - [findings.Body2](docs/Body2.md)
- - [findings.Body3](docs/Body3.md)
- - [findings.BreakdownCardElement](docs/BreakdownCardElement.md)
- - [findings.Card](docs/Card.md)
- - [findings.CardElement](docs/CardElement.md)
- - [findings.Certainty](docs/Certainty.md)
- - [findings.Context](docs/Context.md)
- - [findings.DataTransferred](docs/DataTransferred.md)
- - [findings.Finding](docs/Finding.md)
- - [findings.FindingCountValueType](docs/FindingCountValueType.md)
- - [findings.FindingType](docs/FindingType.md)
- - [findings.InlineResponse200](docs/InlineResponse200.md)
- - [findings.InlineResponse2001](docs/InlineResponse2001.md)
- - [findings.InlineResponse2001Context](docs/InlineResponse2001Context.md)
- - [findings.InlineResponse2001Finding](docs/InlineResponse2001Finding.md)
- - [findings.InlineResponse2001FindingDataTransferred](docs/InlineResponse2001FindingDataTransferred.md)
- - [findings.InlineResponse2001FindingNetworkConnection](docs/InlineResponse2001FindingNetworkConnection.md)
- - [findings.InlineResponse2001FindingNetworkConnectionClient](docs/InlineResponse2001FindingNetworkConnectionClient.md)
- - [findings.InlineResponse2001Kpi](docs/InlineResponse2001Kpi.md)
- - [findings.InlineResponse2001Occurrences](docs/InlineResponse2001Occurrences.md)
- - [findings.InlineResponse2002](docs/InlineResponse2002.md)
- - [findings.InlineResponse200Card](docs/InlineResponse200Card.md)
- - [findings.InlineResponse200CardElements](docs/InlineResponse200CardElements.md)
- - [findings.InlineResponse200Finding](docs/InlineResponse200Finding.md)
- - [findings.InlineResponse200FindingNextSteps](docs/InlineResponse200FindingNextSteps.md)
- - [findings.InlineResponse200Kpi](docs/InlineResponse200Kpi.md)
- - [findings.InlineResponse200Notes](docs/InlineResponse200Notes.md)
- - [findings.InlineResponse200RelatedUrl](docs/InlineResponse200RelatedUrl.md)
- - [findings.InlineResponse200ReportedBy](docs/InlineResponse200ReportedBy.md)
- - [findings.InlineResponse200Section](docs/InlineResponse200Section.md)
- - [findings.Kpi](docs/Kpi.md)
- - [findings.KpiType](docs/KpiType.md)
- - [findings.KpiValueType](docs/KpiValueType.md)
- - [findings.NetworkConnection](docs/NetworkConnection.md)
- - [findings.NumericCardElement](docs/NumericCardElement.md)
- - [findings.NumericCardElementValueType](docs/NumericCardElementValueType.md)
- - [findings.RemediationStep](docs/RemediationStep.md)
- - [findings.Reporter](docs/Reporter.md)
- - [findings.Section](docs/Section.md)
- - [findings.Severity](docs/Severity.md)
- - [findings.SocketAddress](docs/SocketAddress.md)
- - [findings.TimeSeriesCardElement](docs/TimeSeriesCardElement.md)
- - [findings.ValueType](docs/ValueType.md)
-
-
-
-## Examples
-
-Try out the [examples](examples). Go to [Security Advisor dashboard](https://cloud.ibm.com/security-advisor#/dashboard) for visualizing it.
-The examples require you to export the following variables:
-```sh
-export account_id=<your account id>
-export authorization=<Bearer <token>>
-export region=eu-gb
-
-node create_notes.js
-node create_occurrences.js
+// env vars
+// FINDINGS_API_AUTH_TYPE=iam
+// FINDINGS_API_APIKEY=<apikey>
+const iamAuthenticator = getAuthenticatorFromEnvironment('findings-api');
 ```
-`us-south` will target the Dallas endpoint. Use `eu-gb` to target London by exporting `region`. Default region in the example is `us-south`
-[Obtain authorization token](#generating-authorization-token) for filling in the token value. We have used async/await to simplify the examples. Make sure your Node version supports it natively. You can check [here](https://node.green/#ES2017-features-async-functions)
+
+To learn more about the Authenticators and how to use them with your services, see [the detailed documentation](https://github.com/IBM/node-sdk-core/blob/master/AUTHENTICATION.md).
+
+## Using the SDK
+### Basic Usage
+
+All methods return a Promise that either resolves with the response from the service or rejects with an Error. The response contains the body, the headers, the status code, and the status text.
+
+```js
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
+  url: 'https://us-south.secadvisor.cloud.ibm.com/findings',
+});
+
+findingsAPIClient
+  .listNotes({account_id: "account_id", provider_id: "provider_id"})
+  .then(
+    response => {
+      // handle response
+      // the body is under property `result`
+      console.log(JSON.stringify(response.result, null, 2));
+
+      // access the headers
+      console.log(JSON.stringify(response.headers, null, 2));
+
+      // access the status code
+      console.log(response.status);
+
+      // access the status text
+      console.log(response.statusText);
+    },
+    err => {
+      // handle request/SDK errors
+      console.log(err);
+    }
+  )
+  .catch(err => {
+    // catch errors in response handling code
+    console.log(err);
+  });
+
+```
+
+### Setting the Service URL
+You can set or reset the base URL after constructing the client instance using the `setServiceUrl` method:
+
+```js
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
+});
+
+findingsAPIClient.setServiceUrl('https://eu-gb.secadvisor.cloud.ibm.com/findings');
+```
+
+### Sending request headers
+Custom headers can be passed with any request. There are two ways of setting them - setting default headers in the constructor or passing request-specific headers directly to one of the methods.
+
+#### Default headers
+Any headers passed in with the service client constructor will be stored and automatically added to every request made with said client.
+
+```js
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
+  headers: {
+    'X-Custom-Header': 'some value',
+  },
+});
+
+findingsAPIClient.listNotes({account_id: "account_id", provider_id: "provider_id"}).then(res => {
+  // X-Custom-Header will have been sent with the request
+});
+```
+
+## Configuring the HTTPS Agent
+The SDK provides the user with full control over the HTTPS Agent used to make requests. This is available for both the service client and the authenticators that make network requests (e.g. `IamAuthenticator`). Outlined below are a couple of different scenarios where this capability is needed. Note that this functionality is for Node environments only - these configurtions will have no effect in the browser.
+
+### Use behind a corporate proxy
+To use the SDK (which makes HTTPS requests) behind an HTTP proxy, a special tunneling agent must be used. Use the package [`tunnel`](https://github.com/koichik/node-tunnel/) for this. Configure this agent with your proxy information, and pass it in as the HTTPS agent in the service constructor. Additionally, you must set `proxy` to `false` in the client constructor. See this example configuration:
+
+```js
+const tunnel = require('tunnel');
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
+  httpsAgent: tunnel.httpsOverHttp({
+    proxy: {
+      host: 'some.host.org',
+      port: 1234,
+    },
+  }),
+  proxy: false,
+});
+```
+
+### Sending custom certificates
+To send custom certificates as a security measure in your request, use the `cert`, `key`, and/or `ca` properties of the HTTPS Agent. See [this documentation](https://nodejs.org/api/tls.html#tls_tls_createsecurecontext_options) for more information about the options. Note that the entire contents of the file must be provided - not just the file name.
+```js
+const tunnel = require('tunnel');
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const certFile = fs.readFileSync('./my-cert.pem');
+const keyFile = fs.readFileSync('./my-key.pem');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({
+    apikey: '{apikey}',
+    httpsAgent: new https.Agent({
+      key: keyFile,
+      cert: certFile,
+    })
+  }),
+  httpsAgent: new https.Agent({
+    key: keyFile,
+    cert: certFile,
+  }),
+});
+```
+
+### Disabling SSL Verification - Discouraged
+The HTTP client can be configured to disable SSL verification. **Note that this has serious security implications - only do this if you really mean to!** ⚠️
+
+To do this, set `disableSslVerification` to `true` in the service constructor and/or authenticator constructor, like below:
+
+```js
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({ apikey: '<apikey>', disableSslVerification: true }), // this will disable SSL verification for requests to the token endpoint
+  disableSslVerification: true, // this will disable SSL verification for any request made with this client instance
+});
+```
+
+## Documentation
+You can find links to the documentation at https://cloud.ibm.com/docs/security-advisor. Click API reference.
+
+There are also auto-generated JSDocs available at http://ibm-cloud-security.github.io/security-advisor-findings-sdk-nodejs
+
+## Questions
+If you are having difficulties using the APIs or have a question about the Watson services, please ask a question at [dW Answers](https://developer.ibm.com/answers/questions/ask) or [Stack Overflow](http://stackoverflow.com/questions/ask).
+
+## Debug
+This module uses the [`debug`](https://github.com/visionmedia/debug) package for logging. Specify the desired environment variable to enable logging debug messages.
+
+## Tests
+Running all the tests:
+```sh
+npm test
+```
+
+Running a specific test:
+```sh
+npm run jest -- '<path to test>'
+```
+
+## Open source @ IBM
+[Find more open source projects on the IBM Github Page.][ibm-open-source]
+
+## Contributing
+See [CONTRIBUTING](CONTRIBUTING.md).
+
+## Featured Projects
+We love to highlight cool open-source projects that use this SDK! If you'd like to get your project added to the list, feel free to make an issue linking us to it.
+<link-to-project>
+
+## License
+This library is licensed under Apache 2.0. Full license text is available in
+[LICENSE][license].
+
+[ibm-cloud-onboarding]: http://cloud.ibm.com/registration?target=/developer/watson&cm_sp=WatsonPlatform-WatsonServices-_-OnPageNavLink-IBMWatson_SDKs-_-Node
+[ibm-open-source]: http://ibm.github.io/
+[license]: http://www.apache.org/licenses/LICENSE-2.0
