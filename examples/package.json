@@ -1,0 +1,13 @@
+{
+  "name": "ibm-security-advisor-examples",
+  "version": "1.0.0",
+  "description": "Examples of using the IBM Cloud Security Advisor Node.js SDK",
+  "private": true,
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ibm-security-advisor": "2.0.0"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}
