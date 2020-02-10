@@ -90,7 +90,7 @@ const findingsAPIClient = new FindingsAPI({
 });
 
 findingsAPIClient
-  .listNotes({account_id: "account_id", provider_id: "provider_id"})
+  .listNotes({accountId: "accountId", providerId: "providerId"})
   .then(
     response => {
       // handle response
@@ -120,6 +120,9 @@ findingsAPIClient
 
 ### Setting the Service URL
 You can set or reset the base URL after constructing the client instance using the `setServiceUrl` method:
+Currently there are two supported endpoints:
+1. https://eu-gb.secadvisor.cloud.ibm.com/findings
+2. https://us-south.secadvisor.cloud.ibm.com/findings
 
 ```js
 const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
@@ -149,7 +152,7 @@ const findingsAPIClient = new FindingsAPI({
   },
 });
 
-findingsAPIClient.listNotes({account_id: "account_id", provider_id: "provider_id"}).then(res => {
+findingsAPIClient.listNotes({accountId: "accountId", providerId: "providerId"}).then(res => {
   // X-Custom-Header will have been sent with the request
 });
 ```
