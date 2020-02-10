@@ -1,3 +1,13 @@
+# [3.0.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v2.0.0...v3.0.0) (2020-02-10)
+
+
+* Merge pull request #3 from ibm-cloud-security/fixexamples ([cb7ca09](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/commit/cb7ca094daec3fdedae09efe10962ad49e02c814)), closes [#3](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/issues/3)
+
+
+### BREAKING CHANGES
+
+* Avoid prefixing parameters with new
+
 # [2.0.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v1.0.0...v2.0.0) (2020-02-09)
 
 
