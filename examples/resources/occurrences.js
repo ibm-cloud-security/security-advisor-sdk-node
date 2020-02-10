@@ -1,15 +1,14 @@
 module.exports = [
   {
-    newName: 'occurence1',
-    newResourceUrl: 'string',
-    newNoteName: `${process.env.account_id}/providers/security-advisor/notes/mynote`,
-    newKind: 'FINDING',
-    newProviderId: 'security-advisor',
-    newId: 'occurence1',
-    newContext: {
+    name: 'occurence1',
+    resourceUrl: 'string',
+    noteName: `${process.env.account_id}/providers/security-advisor/notes/mynote`,
+    kind: 'FINDING',
+    id: 'occurence1',
+    context: {
       resource_name: 'myresource',
     },
-    newFinding: {
+    finding: {
       severity: 'LOW',
       certainty: 'LOW',
       next_steps: [
@@ -21,16 +20,15 @@ module.exports = [
     },
   },
   {
-    newName: 'occurence2',
-    newResourceUrl: 'string',
-    newNoteName: `${process.env.account_id}/providers/security-advisor/notes/sample-kpi`,
-    newKind: 'KPI',
-    newProviderId: 'security-advisor',
-    newId: 'occurence2',
-    newContext: {
+    name: 'occurence2',
+    resourceUrl: 'string',
+    noteName: `${process.env.account_id}/providers/security-advisor/notes/sample-kpi`,
+    kind: 'KPI',
+    id: 'occurence2',
+    context: {
       resource_name: 'myresource2',
     },
-    newKpi: {
+    kpi: {
       value: 10,
       total: 100,
     },

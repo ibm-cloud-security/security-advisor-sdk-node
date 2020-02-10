@@ -223,7 +223,7 @@ You can find links to the documentation at https://cloud.ibm.com/docs/security-a
 There are also auto-generated JSDocs available at http://ibm-cloud-security.github.io/security-advisor-findings-sdk-nodejs
 
 ## Questions
-If you are having difficulties using the APIs or have a question about the Watson services, please ask a question at [dW Answers](https://developer.ibm.com/answers/questions/ask) or [Stack Overflow](http://stackoverflow.com/questions/ask).
+If you are having difficulties using the APIs or have a question about the IBM Cloud Security Advisor offering, please ask a question at [dW Answers](https://developer.ibm.com/answers/questions/ask) or [Stack Overflow](http://stackoverflow.com/questions/ask).
 
 ## Debug
 This module uses the [`debug`](https://github.com/visionmedia/debug) package for logging. Specify the desired environment variable to enable logging debug messages.
@@ -253,6 +253,6 @@ We love to highlight cool open-source projects that use this SDK! If you'd like 
 This library is licensed under Apache 2.0. Full license text is available in
 [LICENSE][license].
 
-[ibm-cloud-onboarding]: http://cloud.ibm.com/registration?target=/developer/watson&cm_sp=WatsonPlatform-WatsonServices-_-OnPageNavLink-IBMWatson_SDKs-_-Node
+[ibm-cloud-onboarding]: https://cloud.ibm.com/registration?state=%2Fsecurity-advisor%23%2Fdashboard
 [ibm-open-source]: http://ibm.github.io/
 [license]: http://www.apache.org/licenses/LICENSE-2.0

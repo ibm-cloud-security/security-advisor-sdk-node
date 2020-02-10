@@ -1,16 +1,15 @@
 module.exports = [
   {
-    newKind: 'CARD',
-    providerId: 'security-advisor',
-    newId: 'mycard',
-    newShortDescription: 'card short description',
-    newLongDescription: 'card long description',
-    newReportedBy: {
+    kind: 'CARD',
+    id: 'mycard',
+    shortDescription: 'card short description',
+    longDescription: 'card long description',
+    reportedBy: {
       id: 'myprovider',
       title: 'My provider',
       url: 'https://example.com',
     },
-    newCard: {
+    card: {
       section: 'Business Partner Tools',
       title: 'SampleCard',
       subtitle: 'Sample Card',
@@ -32,17 +31,16 @@ module.exports = [
   },
 
   {
-    newKind: 'FINDING',
-    providerId: 'security-advisor',
-    newId: 'mynote',
-    newShortDescription: 'Notes short description',
-    newLongDescription: 'Notes long description',
-    newReportedBy: {
+    kind: 'FINDING',
+    id: 'mynote',
+    shortDescription: 'Notes short description',
+    longDescription: 'Notes long description',
+    reportedBy: {
       id: 'My provider',
       title: 'My provider',
       url: 'https://www.example.com',
     },
-    newFinding: {
+    finding: {
       severity: 'HIGH',
       next_steps: [
         {
@@ -55,17 +53,16 @@ module.exports = [
     },
   },
   {
-    newKind: 'KPI',
-    providerId: 'security-advisor',
-    newId: 'sample-kpi',
-    newShortDescription: 'kpi short description',
-    newLongDescription: 'kpi long description',
-    newReportedBy: {
+    kind: 'KPI',
+    id: 'sample-kpi',
+    shortDescription: 'kpi short description',
+    longDescription: 'kpi long description',
+    reportedBy: {
       id: 'My provider',
       title: 'My provider',
       url: 'https://www.example.com',
     },
-    newKpi: {
+    kpi: {
       aggregation_type: 'SUM',
       severity: 'HIGH',
     },
