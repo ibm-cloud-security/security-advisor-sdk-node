@@ -28,7 +28,7 @@ const {
 
 const service = {
   authenticator: new NoAuthAuthenticator(),
-  url: 'https://gateway.watsonplatform.net/findings/findings',
+  url: 'https://sec.advisor.unit.test/findings',
 };
 
 const findingsApi = new FindingsApiV1(service);
@@ -96,6 +96,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'body'];
+
         let err;
         try {
           await findingsApi.postGraph({});
@@ -108,6 +111,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'body'];
+
         const postGraphPromise = findingsApi.postGraph();
         expectToBePromise(postGraphPromise);
 
@@ -124,41 +130,39 @@ describe('FindingsApiV1', () => {
         // parameters
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
-        const newShortDescription = 'fake_newShortDescription';
-        const newLongDescription = 'fake_newLongDescription';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
-        const newReportedBy = 'fake_newReportedBy';
-        const newName = 'fake_newName';
-        const newRelatedUrl = 'fake_newRelatedUrl';
-        const newExpirationTime = 'fake_newExpirationTime';
-        const newCreateTime = 'fake_newCreateTime';
-        const newUpdateTime = 'fake_newUpdateTime';
-        const newProviderId = 'fake_newProviderId';
-        const newShared = 'fake_newShared';
-        const newFinding = 'fake_newFinding';
-        const newKpi = 'fake_newKpi';
-        const newCard = 'fake_newCard';
-        const newSection = 'fake_newSection';
+        const shortDescription = 'fake_shortDescription';
+        const longDescription = 'fake_longDescription';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
+        const reportedBy = 'fake_reportedBy';
+        const name = 'fake_name';
+        const relatedUrl = 'fake_relatedUrl';
+        const expirationTime = 'fake_expirationTime';
+        const createTime = 'fake_createTime';
+        const updateTime = 'fake_updateTime';
+        const shared = 'fake_shared';
+        const finding = 'fake_finding';
+        const kpi = 'fake_kpi';
+        const card = 'fake_card';
+        const section = 'fake_section';
         const params = {
           accountId,
           providerId,
-          newShortDescription,
-          newLongDescription,
-          newKind,
-          newId,
-          newReportedBy,
-          newName,
-          newRelatedUrl,
-          newExpirationTime,
-          newCreateTime,
-          newUpdateTime,
-          newProviderId,
-          newShared,
-          newFinding,
-          newKpi,
-          newCard,
-          newSection,
+          shortDescription,
+          longDescription,
+          kind,
+          id,
+          reportedBy,
+          name,
+          relatedUrl,
+          expirationTime,
+          createTime,
+          updateTime,
+          shared,
+          finding,
+          kpi,
+          card,
+          section,
         };
 
         const createNoteResult = findingsApi.createNote(params);
@@ -175,22 +179,21 @@ describe('FindingsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        expect(options.body['short_description']).toEqual(newShortDescription);
-        expect(options.body['long_description']).toEqual(newLongDescription);
-        expect(options.body['kind']).toEqual(newKind);
-        expect(options.body['id']).toEqual(newId);
-        expect(options.body['reported_by']).toEqual(newReportedBy);
-        expect(options.body['name']).toEqual(newName);
-        expect(options.body['related_url']).toEqual(newRelatedUrl);
-        expect(options.body['expiration_time']).toEqual(newExpirationTime);
-        expect(options.body['create_time']).toEqual(newCreateTime);
-        expect(options.body['update_time']).toEqual(newUpdateTime);
-        expect(options.body['provider_id']).toEqual(newProviderId);
-        expect(options.body['shared']).toEqual(newShared);
-        expect(options.body['finding']).toEqual(newFinding);
-        expect(options.body['kpi']).toEqual(newKpi);
-        expect(options.body['card']).toEqual(newCard);
-        expect(options.body['section']).toEqual(newSection);
+        expect(options.body['short_description']).toEqual(shortDescription);
+        expect(options.body['long_description']).toEqual(longDescription);
+        expect(options.body['kind']).toEqual(kind);
+        expect(options.body['id']).toEqual(id);
+        expect(options.body['reported_by']).toEqual(reportedBy);
+        expect(options.body['name']).toEqual(name);
+        expect(options.body['related_url']).toEqual(relatedUrl);
+        expect(options.body['expiration_time']).toEqual(expirationTime);
+        expect(options.body['create_time']).toEqual(createTime);
+        expect(options.body['update_time']).toEqual(updateTime);
+        expect(options.body['shared']).toEqual(shared);
+        expect(options.body['finding']).toEqual(finding);
+        expect(options.body['kpi']).toEqual(kpi);
+        expect(options.body['card']).toEqual(card);
+        expect(options.body['section']).toEqual(section);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['provider_id']).toEqual(providerId);
       });
@@ -199,21 +202,21 @@ describe('FindingsApiV1', () => {
         // parameters
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
-        const newShortDescription = 'fake_newShortDescription';
-        const newLongDescription = 'fake_newLongDescription';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
-        const newReportedBy = 'fake_newReportedBy';
+        const shortDescription = 'fake_shortDescription';
+        const longDescription = 'fake_longDescription';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
+        const reportedBy = 'fake_reportedBy';
         const userAccept = 'fake/header';
         const userContentType = 'fake/header';
         const params = {
           accountId,
           providerId,
-          newShortDescription,
-          newLongDescription,
-          newKind,
-          newId,
-          newReportedBy,
+          shortDescription,
+          longDescription,
+          kind,
+          id,
+          reportedBy,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -227,6 +230,17 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = [
+          'accountId',
+          'providerId',
+          'shortDescription',
+          'longDescription',
+          'kind',
+          'id',
+          'reportedBy',
+        ];
+
         let err;
         try {
           await findingsApi.createNote({});
@@ -239,6 +253,17 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = [
+          'accountId',
+          'providerId',
+          'shortDescription',
+          'longDescription',
+          'kind',
+          'id',
+          'reportedBy',
+        ];
+
         const createNotePromise = findingsApi.createNote();
         expectToBePromise(createNotePromise);
 
@@ -306,6 +331,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId'];
+
         let err;
         try {
           await findingsApi.listNotes({});
@@ -318,6 +346,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId'];
+
         const listNotesPromise = findingsApi.listNotes();
         expectToBePromise(listNotesPromise);
 
@@ -388,6 +419,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteId'];
+
         let err;
         try {
           await findingsApi.getNote({});
@@ -400,6 +434,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteId'];
+
         const getNotePromise = findingsApi.getNote();
         expectToBePromise(getNotePromise);
 
@@ -417,42 +454,40 @@ describe('FindingsApiV1', () => {
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
         const noteId = 'fake_noteId';
-        const newShortDescription = 'fake_newShortDescription';
-        const newLongDescription = 'fake_newLongDescription';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
-        const newReportedBy = 'fake_newReportedBy';
-        const newName = 'fake_newName';
-        const newRelatedUrl = 'fake_newRelatedUrl';
-        const newExpirationTime = 'fake_newExpirationTime';
-        const newCreateTime = 'fake_newCreateTime';
-        const newUpdateTime = 'fake_newUpdateTime';
-        const newProviderId = 'fake_newProviderId';
-        const newShared = 'fake_newShared';
-        const newFinding = 'fake_newFinding';
-        const newKpi = 'fake_newKpi';
-        const newCard = 'fake_newCard';
-        const newSection = 'fake_newSection';
+        const shortDescription = 'fake_shortDescription';
+        const longDescription = 'fake_longDescription';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
+        const reportedBy = 'fake_reportedBy';
+        const name = 'fake_name';
+        const relatedUrl = 'fake_relatedUrl';
+        const expirationTime = 'fake_expirationTime';
+        const createTime = 'fake_createTime';
+        const updateTime = 'fake_updateTime';
+        const shared = 'fake_shared';
+        const finding = 'fake_finding';
+        const kpi = 'fake_kpi';
+        const card = 'fake_card';
+        const section = 'fake_section';
         const params = {
           accountId,
           providerId,
           noteId,
-          newShortDescription,
-          newLongDescription,
-          newKind,
-          newId,
-          newReportedBy,
-          newName,
-          newRelatedUrl,
-          newExpirationTime,
-          newCreateTime,
-          newUpdateTime,
-          newProviderId,
-          newShared,
-          newFinding,
-          newKpi,
-          newCard,
-          newSection,
+          shortDescription,
+          longDescription,
+          kind,
+          id,
+          reportedBy,
+          name,
+          relatedUrl,
+          expirationTime,
+          createTime,
+          updateTime,
+          shared,
+          finding,
+          kpi,
+          card,
+          section,
         };
 
         const updateNoteResult = findingsApi.updateNote(params);
@@ -473,22 +508,21 @@ describe('FindingsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        expect(options.body['short_description']).toEqual(newShortDescription);
-        expect(options.body['long_description']).toEqual(newLongDescription);
-        expect(options.body['kind']).toEqual(newKind);
-        expect(options.body['id']).toEqual(newId);
-        expect(options.body['reported_by']).toEqual(newReportedBy);
-        expect(options.body['name']).toEqual(newName);
-        expect(options.body['related_url']).toEqual(newRelatedUrl);
-        expect(options.body['expiration_time']).toEqual(newExpirationTime);
-        expect(options.body['create_time']).toEqual(newCreateTime);
-        expect(options.body['update_time']).toEqual(newUpdateTime);
-        expect(options.body['provider_id']).toEqual(newProviderId);
-        expect(options.body['shared']).toEqual(newShared);
-        expect(options.body['finding']).toEqual(newFinding);
-        expect(options.body['kpi']).toEqual(newKpi);
-        expect(options.body['card']).toEqual(newCard);
-        expect(options.body['section']).toEqual(newSection);
+        expect(options.body['short_description']).toEqual(shortDescription);
+        expect(options.body['long_description']).toEqual(longDescription);
+        expect(options.body['kind']).toEqual(kind);
+        expect(options.body['id']).toEqual(id);
+        expect(options.body['reported_by']).toEqual(reportedBy);
+        expect(options.body['name']).toEqual(name);
+        expect(options.body['related_url']).toEqual(relatedUrl);
+        expect(options.body['expiration_time']).toEqual(expirationTime);
+        expect(options.body['create_time']).toEqual(createTime);
+        expect(options.body['update_time']).toEqual(updateTime);
+        expect(options.body['shared']).toEqual(shared);
+        expect(options.body['finding']).toEqual(finding);
+        expect(options.body['kpi']).toEqual(kpi);
+        expect(options.body['card']).toEqual(card);
+        expect(options.body['section']).toEqual(section);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['provider_id']).toEqual(providerId);
         expect(options.path['note_id']).toEqual(noteId);
@@ -499,22 +533,22 @@ describe('FindingsApiV1', () => {
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
         const noteId = 'fake_noteId';
-        const newShortDescription = 'fake_newShortDescription';
-        const newLongDescription = 'fake_newLongDescription';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
-        const newReportedBy = 'fake_newReportedBy';
+        const shortDescription = 'fake_shortDescription';
+        const longDescription = 'fake_longDescription';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
+        const reportedBy = 'fake_reportedBy';
         const userAccept = 'fake/header';
         const userContentType = 'fake/header';
         const params = {
           accountId,
           providerId,
           noteId,
-          newShortDescription,
-          newLongDescription,
-          newKind,
-          newId,
-          newReportedBy,
+          shortDescription,
+          longDescription,
+          kind,
+          id,
+          reportedBy,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -528,6 +562,18 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = [
+          'accountId',
+          'providerId',
+          'noteId',
+          'shortDescription',
+          'longDescription',
+          'kind',
+          'id',
+          'reportedBy',
+        ];
+
         let err;
         try {
           await findingsApi.updateNote({});
@@ -540,6 +586,18 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = [
+          'accountId',
+          'providerId',
+          'noteId',
+          'shortDescription',
+          'longDescription',
+          'kind',
+          'id',
+          'reportedBy',
+        ];
+
         const updateNotePromise = findingsApi.updateNote();
         expectToBePromise(updateNotePromise);
 
@@ -610,6 +668,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteId'];
+
         let err;
         try {
           await findingsApi.deleteNote({});
@@ -622,6 +683,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteId'];
+
         const deleteNotePromise = findingsApi.deleteNote();
         expectToBePromise(deleteNotePromise);
 
@@ -692,6 +756,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'occurrenceId'];
+
         let err;
         try {
           await findingsApi.getOccurrenceNote({});
@@ -704,6 +771,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'occurrenceId'];
+
         const getOccurrenceNotePromise = findingsApi.getOccurrenceNote();
         expectToBePromise(getOccurrenceNotePromise);
 
@@ -720,34 +790,32 @@ describe('FindingsApiV1', () => {
         // parameters
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
-        const newNoteName = 'fake_newNoteName';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
-        const newName = 'fake_newName';
-        const newResourceUrl = 'fake_newResourceUrl';
-        const newRemediation = 'fake_newRemediation';
-        const newCreateTime = 'fake_newCreateTime';
-        const newUpdateTime = 'fake_newUpdateTime';
-        const newProviderId = 'fake_newProviderId';
-        const newContext = 'fake_newContext';
-        const newFinding = 'fake_newFinding';
-        const newKpi = 'fake_newKpi';
+        const noteName = 'fake_noteName';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
+        const name = 'fake_name';
+        const resourceUrl = 'fake_resourceUrl';
+        const remediation = 'fake_remediation';
+        const createTime = 'fake_createTime';
+        const updateTime = 'fake_updateTime';
+        const context = 'fake_context';
+        const finding = 'fake_finding';
+        const kpi = 'fake_kpi';
         const replaceIfExists = 'fake_replaceIfExists';
         const params = {
           accountId,
           providerId,
-          newNoteName,
-          newKind,
-          newId,
-          newName,
-          newResourceUrl,
-          newRemediation,
-          newCreateTime,
-          newUpdateTime,
-          newProviderId,
-          newContext,
-          newFinding,
-          newKpi,
+          noteName,
+          kind,
+          id,
+          name,
+          resourceUrl,
+          remediation,
+          createTime,
+          updateTime,
+          context,
+          finding,
+          kpi,
           replaceIfExists,
         };
 
@@ -766,18 +834,17 @@ describe('FindingsApiV1', () => {
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
         checkUserHeader(createRequestMock, 'Replace-If-Exists', replaceIfExists);
-        expect(options.body['note_name']).toEqual(newNoteName);
-        expect(options.body['kind']).toEqual(newKind);
-        expect(options.body['id']).toEqual(newId);
-        expect(options.body['name']).toEqual(newName);
-        expect(options.body['resource_url']).toEqual(newResourceUrl);
-        expect(options.body['remediation']).toEqual(newRemediation);
-        expect(options.body['create_time']).toEqual(newCreateTime);
-        expect(options.body['update_time']).toEqual(newUpdateTime);
-        expect(options.body['provider_id']).toEqual(newProviderId);
-        expect(options.body['context']).toEqual(newContext);
-        expect(options.body['finding']).toEqual(newFinding);
-        expect(options.body['kpi']).toEqual(newKpi);
+        expect(options.body['note_name']).toEqual(noteName);
+        expect(options.body['kind']).toEqual(kind);
+        expect(options.body['id']).toEqual(id);
+        expect(options.body['name']).toEqual(name);
+        expect(options.body['resource_url']).toEqual(resourceUrl);
+        expect(options.body['remediation']).toEqual(remediation);
+        expect(options.body['create_time']).toEqual(createTime);
+        expect(options.body['update_time']).toEqual(updateTime);
+        expect(options.body['context']).toEqual(context);
+        expect(options.body['finding']).toEqual(finding);
+        expect(options.body['kpi']).toEqual(kpi);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['provider_id']).toEqual(providerId);
       });
@@ -786,17 +853,17 @@ describe('FindingsApiV1', () => {
         // parameters
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
-        const newNoteName = 'fake_newNoteName';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
+        const noteName = 'fake_noteName';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
         const userAccept = 'fake/header';
         const userContentType = 'fake/header';
         const params = {
           accountId,
           providerId,
-          newNoteName,
-          newKind,
-          newId,
+          noteName,
+          kind,
+          id,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -810,6 +877,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteName', 'kind', 'id'];
+
         let err;
         try {
           await findingsApi.createOccurrence({});
@@ -822,6 +892,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteName', 'kind', 'id'];
+
         const createOccurrencePromise = findingsApi.createOccurrence();
         expectToBePromise(createOccurrencePromise);
 
@@ -889,6 +962,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId'];
+
         let err;
         try {
           await findingsApi.listOccurrences({});
@@ -901,6 +977,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId'];
+
         const listOccurrencesPromise = findingsApi.listOccurrences();
         expectToBePromise(listOccurrencesPromise);
 
@@ -977,6 +1056,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteId'];
+
         let err;
         try {
           await findingsApi.listNoteOccurrences({});
@@ -989,6 +1071,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'noteId'];
+
         const listNoteOccurrencesPromise = findingsApi.listNoteOccurrences();
         expectToBePromise(listNoteOccurrencesPromise);
 
@@ -1059,6 +1144,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'occurrenceId'];
+
         let err;
         try {
           await findingsApi.getOccurrence({});
@@ -1071,6 +1159,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'occurrenceId'];
+
         const getOccurrencePromise = findingsApi.getOccurrence();
         expectToBePromise(getOccurrencePromise);
 
@@ -1088,34 +1179,32 @@ describe('FindingsApiV1', () => {
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
         const occurrenceId = 'fake_occurrenceId';
-        const newNoteName = 'fake_newNoteName';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
-        const newName = 'fake_newName';
-        const newResourceUrl = 'fake_newResourceUrl';
-        const newRemediation = 'fake_newRemediation';
-        const newCreateTime = 'fake_newCreateTime';
-        const newUpdateTime = 'fake_newUpdateTime';
-        const newProviderId = 'fake_newProviderId';
-        const newContext = 'fake_newContext';
-        const newFinding = 'fake_newFinding';
-        const newKpi = 'fake_newKpi';
+        const noteName = 'fake_noteName';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
+        const name = 'fake_name';
+        const resourceUrl = 'fake_resourceUrl';
+        const remediation = 'fake_remediation';
+        const createTime = 'fake_createTime';
+        const updateTime = 'fake_updateTime';
+        const context = 'fake_context';
+        const finding = 'fake_finding';
+        const kpi = 'fake_kpi';
         const params = {
           accountId,
           providerId,
           occurrenceId,
-          newNoteName,
-          newKind,
-          newId,
-          newName,
-          newResourceUrl,
-          newRemediation,
-          newCreateTime,
-          newUpdateTime,
-          newProviderId,
-          newContext,
-          newFinding,
-          newKpi,
+          noteName,
+          kind,
+          id,
+          name,
+          resourceUrl,
+          remediation,
+          createTime,
+          updateTime,
+          context,
+          finding,
+          kpi,
         };
 
         const updateOccurrenceResult = findingsApi.updateOccurrence(params);
@@ -1136,18 +1225,17 @@ describe('FindingsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        expect(options.body['note_name']).toEqual(newNoteName);
-        expect(options.body['kind']).toEqual(newKind);
-        expect(options.body['id']).toEqual(newId);
-        expect(options.body['name']).toEqual(newName);
-        expect(options.body['resource_url']).toEqual(newResourceUrl);
-        expect(options.body['remediation']).toEqual(newRemediation);
-        expect(options.body['create_time']).toEqual(newCreateTime);
-        expect(options.body['update_time']).toEqual(newUpdateTime);
-        expect(options.body['provider_id']).toEqual(newProviderId);
-        expect(options.body['context']).toEqual(newContext);
-        expect(options.body['finding']).toEqual(newFinding);
-        expect(options.body['kpi']).toEqual(newKpi);
+        expect(options.body['note_name']).toEqual(noteName);
+        expect(options.body['kind']).toEqual(kind);
+        expect(options.body['id']).toEqual(id);
+        expect(options.body['name']).toEqual(name);
+        expect(options.body['resource_url']).toEqual(resourceUrl);
+        expect(options.body['remediation']).toEqual(remediation);
+        expect(options.body['create_time']).toEqual(createTime);
+        expect(options.body['update_time']).toEqual(updateTime);
+        expect(options.body['context']).toEqual(context);
+        expect(options.body['finding']).toEqual(finding);
+        expect(options.body['kpi']).toEqual(kpi);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['provider_id']).toEqual(providerId);
         expect(options.path['occurrence_id']).toEqual(occurrenceId);
@@ -1158,18 +1246,18 @@ describe('FindingsApiV1', () => {
         const accountId = 'fake_accountId';
         const providerId = 'fake_providerId';
         const occurrenceId = 'fake_occurrenceId';
-        const newNoteName = 'fake_newNoteName';
-        const newKind = 'fake_newKind';
-        const newId = 'fake_newId';
+        const noteName = 'fake_noteName';
+        const kind = 'fake_kind';
+        const id = 'fake_id';
         const userAccept = 'fake/header';
         const userContentType = 'fake/header';
         const params = {
           accountId,
           providerId,
           occurrenceId,
-          newNoteName,
-          newKind,
-          newId,
+          noteName,
+          kind,
+          id,
           headers: {
             Accept: userAccept,
             'Content-Type': userContentType,
@@ -1183,6 +1271,16 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = [
+          'accountId',
+          'providerId',
+          'occurrenceId',
+          'noteName',
+          'kind',
+          'id',
+        ];
+
         let err;
         try {
           await findingsApi.updateOccurrence({});
@@ -1195,6 +1293,16 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = [
+          'accountId',
+          'providerId',
+          'occurrenceId',
+          'noteName',
+          'kind',
+          'id',
+        ];
+
         const updateOccurrencePromise = findingsApi.updateOccurrence();
         expectToBePromise(updateOccurrencePromise);
 
@@ -1265,6 +1373,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'occurrenceId'];
+
         let err;
         try {
           await findingsApi.deleteOccurrence({});
@@ -1277,6 +1388,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId', 'providerId', 'occurrenceId'];
+
         const deleteOccurrencePromise = findingsApi.deleteOccurrence();
         expectToBePromise(deleteOccurrencePromise);
 
@@ -1339,6 +1453,9 @@ describe('FindingsApiV1', () => {
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
+        // required parameters for this method
+        const requiredParams = ['accountId'];
+
         let err;
         try {
           await findingsApi.listProviders({});
@@ -1351,6 +1468,9 @@ describe('FindingsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
+        // required parameters for this method
+        const requiredParams = ['accountId'];
+
         const listProvidersPromise = findingsApi.listProviders();
         expectToBePromise(listProvidersPromise);
 

@@ -50,20 +50,25 @@ let createNotes = async () => {
   await Promise.all(
     notes.map(async n => {
       try {
-        console.log('Creating note with id', n.newId);
-        await findingsAPIClient.createNote(Object.assign({ accountId: process.env.account_id }, n));
-        console.log('Created note with id', n.newId);
+        console.log('Creating note with id', n.id);
+        await findingsAPIClient.createNote(
+          Object.assign({ accountId: process.env.account_id, providerId: 'security-advisor' }, n)
+        );
+        console.log('Created note with id', n.id);
       } catch (err) {
-        console.log('Note creation failed for id', n.newId, err.message);
+        console.log('Note creation failed for id', n.id, err.message);
         if (err.status == 409) {
           try {
-            console.log('Trying to update note with id', n.newId);
+            console.log('Trying to update note with id', n.id);
             await findingsAPIClient.updateNote(
-              Object.assign({ accountId: process.env.account_id, noteId: n.newId }, n)
+              Object.assign(
+                { accountId: process.env.account_id, noteId: n.id, providerId: 'security-advisor' },
+                n
+              )
             );
-            console.log('Successfully updated note with id', n.newId);
+            console.log('Successfully updated note with id', n.id);
           } catch (err) {
-            console.log('Note update failed for id', n.newId, err.message);
+            console.log('Note update failed for id', n.id, err.message);
           }
         }
       }
@@ -75,29 +80,29 @@ let createOccurrences = async () => {
   await Promise.all(
     occurrences.map(async o => {
       try {
-        console.log('Creating occurence with id', o.newId);
+        console.log('Creating occurence with id', o.id);
         await findingsAPIClient.createOccurrence(
           Object.assign({ accountId: process.env.account_id, providerId: 'security-advisor' }, o)
         );
-        console.log('Created occurence with id', o.newId);
+        console.log('Created occurence with id', o.id);
       } catch (err) {
-        console.log('Occurence creation failed for id', o.newId, err.message);
+        console.log('Occurence creation failed for id', o.id, err.message);
         if (err.status == 409) {
           try {
-            console.log('Trying to update occurence with id', o.newId);
+            console.log('Trying to update occurence with id', o.id);
             await findingsAPIClient.updateOccurrence(
               Object.assign(
                 {
                   accountId: process.env.account_id,
                   providerId: 'security-advisor',
-                  occurrenceId: o.newId,
+                  occurrenceId: o.id,
                 },
                 o
               )
             );
-            console.log('Successfully updated occurence with id', o.newId);
+            console.log('Successfully updated occurence with id', o.id);
           } catch (err) {
-            console.log('Note update failed for id', o.newId, err.message);
+            console.log('Note update failed for id', o.id, err.message);
           }
         }
       }
