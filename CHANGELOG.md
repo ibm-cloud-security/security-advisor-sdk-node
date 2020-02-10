@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v3.0.0...v3.0.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* Doc updates ([fcd828f](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/commit/fcd828fe22857be362247d5d1c941cdebc97b130))
+
 # [3.0.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v2.0.0...v3.0.0) (2020-02-10)
 
 
