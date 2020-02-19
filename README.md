@@ -86,7 +86,7 @@ const { IamAuthenticator } = require('ibm-security-advisor/auth');
 
 const findingsAPIClient = new FindingsAPI({
   authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
-  url: 'https://us-south.secadvisor.cloud.ibm.com/findings',
+  serviceUrl: 'https://us-south.secadvisor.cloud.ibm.com/findings',
 });
 
 findingsAPIClient
