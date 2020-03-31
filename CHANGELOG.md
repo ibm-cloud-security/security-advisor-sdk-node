@@ -1,3 +1,13 @@
+# [4.0.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v3.0.1...v4.0.0) (2020-03-31)
+
+
+* Merge pull request #7 from ibm-cloud-security/newchnages ([62e86f8](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/commit/62e86f84a0e20bad26c3fdd79b0b0d55af4dc7bf)), closes [#7](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/issues/7)
+
+
+### BREAKING CHANGES
+
+* Pagination and graph updates
+
 ## [3.0.1](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v3.0.0...v3.0.1) (2020-02-10)
 
 
