@@ -112,7 +112,7 @@ let createOccurrences = async () => {
 
 let deleteNote = async noteId => {
   try {
-    let response = await findingsAPIClient.deleteNote({
+    await findingsAPIClient.deleteNote({
       accountId: process.env.account_id,
       providerId: 'security-advisor',
       noteId,
@@ -125,7 +125,7 @@ let deleteNote = async noteId => {
 
 let deleteOccurrence = async occurrenceId => {
   try {
-    let response = await findingsAPIClient.deleteOccurrence({
+    await findingsAPIClient.deleteOccurrence({
       accountId: process.env.account_id,
       providerId: 'security-advisor',
       occurrenceId,

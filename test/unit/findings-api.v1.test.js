@@ -135,7 +135,6 @@ describe('FindingsApiV1', () => {
         const kind = 'fake_kind';
         const id = 'fake_id';
         const reportedBy = 'fake_reportedBy';
-        const name = 'fake_name';
         const relatedUrl = 'fake_relatedUrl';
         const expirationTime = 'fake_expirationTime';
         const createTime = 'fake_createTime';
@@ -153,7 +152,6 @@ describe('FindingsApiV1', () => {
           kind,
           id,
           reportedBy,
-          name,
           relatedUrl,
           expirationTime,
           createTime,
@@ -184,7 +182,6 @@ describe('FindingsApiV1', () => {
         expect(options.body['kind']).toEqual(kind);
         expect(options.body['id']).toEqual(id);
         expect(options.body['reported_by']).toEqual(reportedBy);
-        expect(options.body['name']).toEqual(name);
         expect(options.body['related_url']).toEqual(relatedUrl);
         expect(options.body['expiration_time']).toEqual(expirationTime);
         expect(options.body['create_time']).toEqual(createTime);
@@ -459,7 +456,6 @@ describe('FindingsApiV1', () => {
         const kind = 'fake_kind';
         const id = 'fake_id';
         const reportedBy = 'fake_reportedBy';
-        const name = 'fake_name';
         const relatedUrl = 'fake_relatedUrl';
         const expirationTime = 'fake_expirationTime';
         const createTime = 'fake_createTime';
@@ -478,7 +474,6 @@ describe('FindingsApiV1', () => {
           kind,
           id,
           reportedBy,
-          name,
           relatedUrl,
           expirationTime,
           createTime,
@@ -513,7 +508,6 @@ describe('FindingsApiV1', () => {
         expect(options.body['kind']).toEqual(kind);
         expect(options.body['id']).toEqual(id);
         expect(options.body['reported_by']).toEqual(reportedBy);
-        expect(options.body['name']).toEqual(name);
         expect(options.body['related_url']).toEqual(relatedUrl);
         expect(options.body['expiration_time']).toEqual(expirationTime);
         expect(options.body['create_time']).toEqual(createTime);
@@ -793,7 +787,6 @@ describe('FindingsApiV1', () => {
         const noteName = 'fake_noteName';
         const kind = 'fake_kind';
         const id = 'fake_id';
-        const name = 'fake_name';
         const resourceUrl = 'fake_resourceUrl';
         const remediation = 'fake_remediation';
         const createTime = 'fake_createTime';
@@ -808,7 +801,6 @@ describe('FindingsApiV1', () => {
           noteName,
           kind,
           id,
-          name,
           resourceUrl,
           remediation,
           createTime,
@@ -837,7 +829,6 @@ describe('FindingsApiV1', () => {
         expect(options.body['note_name']).toEqual(noteName);
         expect(options.body['kind']).toEqual(kind);
         expect(options.body['id']).toEqual(id);
-        expect(options.body['name']).toEqual(name);
         expect(options.body['resource_url']).toEqual(resourceUrl);
         expect(options.body['remediation']).toEqual(remediation);
         expect(options.body['create_time']).toEqual(createTime);
@@ -1182,7 +1173,6 @@ describe('FindingsApiV1', () => {
         const noteName = 'fake_noteName';
         const kind = 'fake_kind';
         const id = 'fake_id';
-        const name = 'fake_name';
         const resourceUrl = 'fake_resourceUrl';
         const remediation = 'fake_remediation';
         const createTime = 'fake_createTime';
@@ -1197,7 +1187,6 @@ describe('FindingsApiV1', () => {
           noteName,
           kind,
           id,
-          name,
           resourceUrl,
           remediation,
           createTime,
@@ -1228,7 +1217,6 @@ describe('FindingsApiV1', () => {
         expect(options.body['note_name']).toEqual(noteName);
         expect(options.body['kind']).toEqual(kind);
         expect(options.body['id']).toEqual(id);
-        expect(options.body['name']).toEqual(name);
         expect(options.body['resource_url']).toEqual(resourceUrl);
         expect(options.body['remediation']).toEqual(remediation);
         expect(options.body['create_time']).toEqual(createTime);
@@ -1406,12 +1394,16 @@ describe('FindingsApiV1', () => {
       test('should pass the right params to createRequest', () => {
         // parameters
         const accountId = 'fake_accountId';
-        const pageSize = 'fake_pageSize';
-        const pageToken = 'fake_pageToken';
+        const limit = 'fake_limit';
+        const skip = 'fake_skip';
+        const startProviderId = 'fake_startProviderId';
+        const endProviderId = 'fake_endProviderId';
         const params = {
           accountId,
-          pageSize,
-          pageToken,
+          limit,
+          skip,
+          startProviderId,
+          endProviderId,
         };
 
         const listProvidersResult = findingsApi.listProviders(params);
@@ -1428,8 +1420,10 @@ describe('FindingsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        expect(options.qs['page_size']).toEqual(pageSize);
-        expect(options.qs['page_token']).toEqual(pageToken);
+        expect(options.qs['limit']).toEqual(limit);
+        expect(options.qs['skip']).toEqual(skip);
+        expect(options.qs['start_provider_id']).toEqual(startProviderId);
+        expect(options.qs['end_provider_id']).toEqual(endProviderId);
         expect(options.path['account_id']).toEqual(accountId);
       });
 
