@@ -66,7 +66,7 @@ class FindingsApiV1 extends BaseService {
    * Construct a FindingsApiV1 object.
    *
    * @param {Object} options - Options for the service.
-   * @param {string} [options.serviceUrl] - The base url to use when contacting the service (e.g. 'https://us-south.secadvisor.cloud.ibm.com/findings'). The base url may differ between IBM Cloud regions.
+   * @param {string} [options.serviceUrl] - The base url to use when contacting the service (e.g. 'https://gateway.watsonplatform.net/findings'). The base url may differ between IBM Cloud regions.
    * @param {OutgoingHttpHeaders} [options.headers] - Default headers that shall be included with every request to the service.
    * @param {Authenticator} options.authenticator - The Authenticator object used to authenticate requests to the service
    * @constructor
@@ -157,7 +157,6 @@ class FindingsApiV1 extends BaseService {
    * field can be used as a filter in list requests.
    * @param {string} params.id -
    * @param {Reporter} params.reportedBy - Details about the reporter of this `Note`.
-   * @param {string} [params.name] -
    * @param {ApiNoteRelatedUrl[]} [params.relatedUrl] -
    * @param {string} [params.expirationTime] - Time of expiration for this note, null if note does not expire.
    * @param {string} [params.createTime] - Output only. The time this note was created. This field can be used as a
@@ -198,7 +197,6 @@ class FindingsApiV1 extends BaseService {
         kind: _params.kind,
         id: _params.id,
         reported_by: _params.reportedBy,
-        name: _params.name,
         related_url: _params.relatedUrl,
         expiration_time: _params.expirationTime,
         create_time: _params.createTime,
@@ -365,7 +363,6 @@ class FindingsApiV1 extends BaseService {
    * field can be used as a filter in list requests.
    * @param {string} params.id -
    * @param {Reporter} params.reportedBy - Details about the reporter of this `Note`.
-   * @param {string} [params.name] -
    * @param {ApiNoteRelatedUrl[]} [params.relatedUrl] -
    * @param {string} [params.expirationTime] - Time of expiration for this note, null if note does not expire.
    * @param {string} [params.createTime] - Output only. The time this note was created. This field can be used as a
@@ -407,7 +404,6 @@ class FindingsApiV1 extends BaseService {
         kind: _params.kind,
         id: _params.id,
         reported_by: _params.reportedBy,
-        name: _params.name,
         related_url: _params.relatedUrl,
         expiration_time: _params.expirationTime,
         create_time: _params.createTime,
@@ -578,8 +574,6 @@ class FindingsApiV1 extends BaseService {
    * specified.
    * This field can be used as a filter in list requests.
    * @param {string} params.id -
-   * @param {string} [params.name] - Output only. The name of the `Occurrence` in the form
-   * "{account_id}/providers/{provider_id}/occurrences/{occuurence_id}".
    * @param {string} [params.resourceUrl] - The unique URL of the resource, image or the container, for which the
    * `Occurrence` applies. For example, https://gcr.io/provider/image@sha256:foo. This field can be used as a filter in
    * list requests.
@@ -609,7 +603,6 @@ class FindingsApiV1 extends BaseService {
         note_name: _params.noteName,
         kind: _params.kind,
         id: _params.id,
-        name: _params.name,
         resource_url: _params.resourceUrl,
         remediation: _params.remediation,
         create_time: _params.createTime,
@@ -847,8 +840,6 @@ class FindingsApiV1 extends BaseService {
    * specified.
    * This field can be used as a filter in list requests.
    * @param {string} params.id -
-   * @param {string} [params.name] - Output only. The name of the `Occurrence` in the form
-   * "{account_id}/providers/{provider_id}/occurrences/{occuurence_id}".
    * @param {string} [params.resourceUrl] - The unique URL of the resource, image or the container, for which the
    * `Occurrence` applies. For example, https://gcr.io/provider/image@sha256:foo. This field can be used as a filter in
    * list requests.
@@ -877,7 +868,6 @@ class FindingsApiV1 extends BaseService {
         note_name: _params.noteName,
         kind: _params.kind,
         id: _params.id,
-        name: _params.name,
         resource_url: _params.resourceUrl,
         remediation: _params.remediation,
         create_time: _params.createTime,
@@ -989,8 +979,13 @@ class FindingsApiV1 extends BaseService {
    *
    * @param {Object} params - The parameters to send to the service.
    * @param {string} params.accountId - Account ID.
-   * @param {number} [params.pageSize] - Number of providers to return in the list.
-   * @param {string} [params.pageToken] - Token to provide to skip to a particular spot in the list.
+   * @param {number} [params.limit] - Limit the number of the returned documents to the specified number.
+   * @param {number} [params.skip] - The offset is the index of the item from which you want to start returning data
+   * from. Default is 0.
+   * @param {string} [params.startProviderId] - The first provider_id to include in the result (sorted in ascending
+   * order). Ignored if not provided.
+   * @param {string} [params.endProviderId] - The last provider_id to include in the result (sorted in ascending order).
+   * Ignored if not provided.
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<FindingsApiV1.Response<FindingsApiV1.ApiListProvidersResponse>>}
    */
@@ -1007,8 +1002,10 @@ class FindingsApiV1 extends BaseService {
       }
 
       const query = {
-        page_size: _params.pageSize,
-        page_token: _params.pageToken,
+        limit: _params.limit,
+        skip: _params.skip,
+        start_provider_id: _params.startProviderId,
+        end_provider_id: _params.endProviderId,
       };
 
       const path = {
@@ -1106,7 +1103,6 @@ namespace FindingsApiV1 {
     id: string;
     /** Details about the reporter of this `Note`. */
     reportedBy: Reporter;
-    name?: string;
     relatedUrl?: ApiNoteRelatedUrl[];
     /** Time of expiration for this note, null if note does not expire. */
     expirationTime?: string;
@@ -1170,7 +1166,6 @@ namespace FindingsApiV1 {
     id: string;
     /** Details about the reporter of this `Note`. */
     reportedBy: Reporter;
-    name?: string;
     relatedUrl?: ApiNoteRelatedUrl[];
     /** Time of expiration for this note, null if note does not expire. */
     expirationTime?: string;
@@ -1228,10 +1223,6 @@ namespace FindingsApiV1 {
      */
     kind: ApiNoteKind;
     id: string;
-    /** Output only. The name of the `Occurrence` in the form
-     *  "{account_id}/providers/{provider_id}/occurrences/{occuurence_id}".
-     */
-    name?: string;
     /** The unique URL of the resource, image or the container, for which the `Occurrence` applies. For example,
      *  https://gcr.io/provider/image@sha256:foo. This field can be used as a filter in list requests.
      */
@@ -1308,10 +1299,6 @@ namespace FindingsApiV1 {
      */
     kind: ApiNoteKind;
     id: string;
-    /** Output only. The name of the `Occurrence` in the form
-     *  "{account_id}/providers/{provider_id}/occurrences/{occuurence_id}".
-     */
-    name?: string;
     /** The unique URL of the resource, image or the container, for which the `Occurrence` applies. For example,
      *  https://gcr.io/provider/image@sha256:foo. This field can be used as a filter in list requests.
      */
@@ -1345,10 +1332,14 @@ namespace FindingsApiV1 {
   export interface ListProvidersParams {
     /** Account ID. */
     accountId: string;
-    /** Number of providers to return in the list. */
-    pageSize?: number;
-    /** Token to provide to skip to a particular spot in the list. */
-    pageToken?: string;
+    /** Limit the number of the returned documents to the specified number. */
+    limit?: number;
+    /** The offset is the index of the item from which you want to start returning data from. Default is 0. */
+    skip?: number;
+    /** The first provider_id to include in the result (sorted in ascending order). Ignored if not provided. */
+    startProviderId?: string;
+    /** The last provider_id to include in the result (sorted in ascending order). Ignored if not provided. */
+    endProviderId?: string;
     headers?: OutgoingHttpHeaders;
   }
 
@@ -1440,6 +1431,16 @@ namespace FindingsApiV1 {
     network_connection?: NetworkConnection;
     /** Data transferred details of this finding. */
     data_transferred?: DataTransferred;
+  }
+
+  /** FindingCountValueType. */
+  export interface FindingCountValueType {
+    /** Kind of element - FINDING_COUNT&#58; Kind of value derived from a count of finding occurrences. */
+    kind: string;
+    /** the names of the finding note associated that act as filters for counting the occurrences. */
+    finding_note_names: string[];
+    /** The text of this element type. */
+    text: string;
   }
 
   /** FindingType provides details about a finding note. */
@@ -1561,7 +1562,6 @@ namespace FindingsApiV1 {
 
   /** Provides a detailed description of a `Note`. */
   export interface ApiNote {
-    name?: string;
     /** A one sentence description of this `Note`. */
     short_description: string;
     /** A detailed description of this `Note`. */
@@ -1603,10 +1603,6 @@ namespace FindingsApiV1 {
 
   /** `Occurrence` includes information about analysis occurrences for an image. */
   export interface ApiOccurrence {
-    /** Output only. The name of the `Occurrence` in the form
-     *  "{account_id}/providers/{provider_id}/occurrences/{occuurence_id}".
-     */
-    name?: string;
     /** The unique URL of the resource, image or the container, for which the `Occurrence` applies. For example,
      *  https://gcr.io/provider/image@sha256:foo. This field can be used as a filter in list requests.
      */
@@ -1647,18 +1643,6 @@ namespace FindingsApiV1 {
     value_types: ValueType[];
   }
 
-  /** FindingCountValueType. */
-  export interface FindingCountValueType extends ValueType {
-    /** the names of the finding note associated that act as filters for counting the occurrences. */
-    finding_note_names: string[];
-  }
-
-  /** KpiValueType. */
-  export interface KpiValueType extends ValueType {
-    /** The name of the kpi note associated to the occurrence with the value for this card element value type. */
-    kpi_note_name: string;
-  }
-
   /** A card element with a single numeric value. */
   export interface NumericCardElement extends CardElement {
     /** The text of this card element. */
@@ -1673,7 +1657,7 @@ namespace FindingsApiV1 {
     /** The default interval of the time series. */
     default_interval?: string;
     /** the value types associated to this card element. */
-    value_types: ValueType[];
+    value_types: FindingCountValueType[];
   }
 }
 
