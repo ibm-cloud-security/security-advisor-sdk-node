@@ -34,6 +34,7 @@
     "include": [
         "./auth/*.ts",
         "./lib/*.ts",
-        "./findings-api/*.ts"
+        "./findings-api/*.ts",
+        "./notifications-api/*.ts"
     ]
 }
