@@ -22,7 +22,7 @@ const { getOptions, checkUrlAndMethod, checkMediaHeaders, expectToBePromise } = 
 
 const service = {
   authenticator: new NoAuthAuthenticator(),
-  url: 'https://gateway.watsonplatform.net/notifications/notifications',
+  url: 'https://us-south.secadvisor.cloud.ibm.com/notifications',
 };
 
 const notificationsApi = new NotificationsApiV1(service);

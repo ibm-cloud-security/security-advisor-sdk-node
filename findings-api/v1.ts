@@ -66,7 +66,7 @@ class FindingsApiV1 extends BaseService {
    * Construct a FindingsApiV1 object.
    *
    * @param {Object} options - Options for the service.
-   * @param {string} [options.serviceUrl] - The base url to use when contacting the service (e.g. 'https://gateway.watsonplatform.net/findings'). The base url may differ between IBM Cloud regions.
+   * @param {string} [options.serviceUrl] - The base url to use when contacting the service (e.g. 'https://us-south.secadvisor.cloud.ibm.com/findings'). The base url may differ between IBM Cloud regions.
    * @param {OutgoingHttpHeaders} [options.headers] - Default headers that shall be included with every request to the service.
    * @param {Authenticator} options.authenticator - The Authenticator object used to authenticate requests to the service
    * @constructor
