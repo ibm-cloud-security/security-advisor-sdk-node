@@ -4,7 +4,7 @@ module.exports = [
     description: 'My channel1',
     type: 'Webhook',
     severity: ['low'],
-    endpoint: 'http://mywebhook',
+    endpoint: 'http://mywebhook.com',
     enabled: true,
     alertSource: [
       {

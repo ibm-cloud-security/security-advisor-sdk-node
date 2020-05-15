@@ -7,26 +7,35 @@ Node JS client library to use the IBM Cloud Security Advisor APIs.
 <details>
 <summary>Table of Contents</summary>
 
-* [Overview](#overview)
-* [Prerequisites](#prerequisites)
-* [Installation](#installation)
-* [Authentication](#authentication)
-* [Using the SDK](#using-the-sdk)
-  * [Basic Usage](#basic-usage)
-  * [Setting the Service URL](#setting-the-service-url)
-  * [Sending request headers](#sending-request-headers)
-* [Configuring the HTTPS Agent](#configuring-the-https-agent)
-  * [Use behind a corporate proxy](#use-behind-a-corporate-proxy)
-  * [Sending custom certificates](#sending-custom-certificates)
-  * [Disabling SSL Verification](#disabling-ssl-verification---discouraged)
-* [Documentation](#documentation)
-* [Questions](#questions)
-* [Debug](#debug)
-* [Tests](#tests)
-* [Open Source @ IBM](#open-source--ibm)
-* [Contributing](#contributing)
-* [Featured Projects](#featured-projects)
-* [License](#license)
+- [IBM Cloud Security Advisor Node.js SDK](#ibm-cloud-security-advisor-nodejs-sdk)
+  - [Overview](#overview)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Authentication](#authentication)
+    - [Examples](#examples)
+      - [Programmatic credentials](#programmatic-credentials)
+      - [External configuration](#external-configuration)
+  - [Using the SDK](#using-the-sdk)
+    - [Basic Usage](#basic-usage)
+    - [Setting the Service URL](#setting-the-service-url)
+    - [Sending request headers](#sending-request-headers)
+      - [Default headers](#default-headers)
+  - [Configuring the HTTPS Agent](#configuring-the-https-agent)
+    - [Use behind a corporate proxy](#use-behind-a-corporate-proxy)
+    - [Sending custom certificates](#sending-custom-certificates)
+    - [Disabling SSL Verification - Discouraged](#disabling-ssl-verification---discouraged)
+      - [Findings Api](#findings-api)
+  - [Documentation](#documentation)
+  - [IBM Security Advisor Services](#ibm-security-advisor-services)
+    - [Findings](#findings)
+    - [Notifications](#notifications)
+  - [Questions](#questions)
+  - [Debug](#debug)
+  - [Tests](#tests)
+  - [Open source @ IBM](#open-source--ibm)
+  - [Contributing](#contributing)
+  - [Featured Projects](#featured-projects)
+  - [License](#license)
 </details>
 
 ## Overview
@@ -78,7 +87,7 @@ To learn more about the Authenticators and how to use them with your services, s
 ## Using the SDK
 ### Basic Usage
 
-All methods return a Promise that either resolves with the response from the service or rejects with an Error. The response contains the body, the headers, the status code, and the status text.
+All SDK methods return a Promise that either resolves with the response from the service or rejects with an Error. The response contains the body, the headers, the status code, and the status text.
 
 ```js
 const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
@@ -118,21 +127,28 @@ findingsAPIClient
 
 ```
 
+The [examples](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/tree/master/examples) folder has basic and advanced examples for all the services.
+
 ### Setting the Service URL
 You can set or reset the base URL after constructing the client instance using the `setServiceUrl` method:
 Currently there are two supported endpoints:
-1. https://eu-gb.secadvisor.cloud.ibm.com/findings
-2. https://us-south.secadvisor.cloud.ibm.com/findings
+1. findings:   
+    https://eu-gb.secadvisor.cloud.ibm.com/findings  
+    https://us-south.secadvisor.cloud.ibm.com/findings
+2. notifications:  
+    https://eu-gb.secadvisor.cloud.ibm.com/notifications  
+    https://us-south.secadvisor.cloud.ibm.com/notifications
+
 
 ```js
-const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const NotificationsApi =  require('ibm-security-advisor/notifications-api/v1');
 const { IamAuthenticator } = require('ibm-security-advisor/auth');
 
-const findingsAPIClient = new FindingsAPI({
+const notificationsAPIClient = new NotificationsApi({
   authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
 });
 
-findingsAPIClient.setServiceUrl('https://eu-gb.secadvisor.cloud.ibm.com/findings');
+notificationsAPIClient.setServiceUrl('https://eu-gb.secadvisor.cloud.ibm.com/notifications');
 ```
 
 ### Sending request headers
@@ -182,15 +198,16 @@ const findingsAPIClient = new FindingsAPI({
 
 ### Sending custom certificates
 To send custom certificates as a security measure in your request, use the `cert`, `key`, and/or `ca` properties of the HTTPS Agent. See [this documentation](https://nodejs.org/api/tls.html#tls_tls_createsecurecontext_options) for more information about the options. Note that the entire contents of the file must be provided - not just the file name.
+
 ```js
 const tunnel = require('tunnel');
-const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const NotificationsAPI =  require('ibm-security-advisor/notifications-api/v1');
 const { IamAuthenticator } = require('ibm-security-advisor/auth');
 
 const certFile = fs.readFileSync('./my-cert.pem');
 const keyFile = fs.readFileSync('./my-key.pem');
 
-const findingsAPIClient = new FindingsAPI({
+const notificationsAPIClient = new NotificationsAPI({
   authenticator: new IamAuthenticator({
     apikey: '{apikey}',
     httpsAgent: new https.Agent({
@@ -210,6 +227,7 @@ The HTTP client can be configured to disable SSL verification. **Note that this 
 
 To do this, set `disableSslVerification` to `true` in the service constructor and/or authenticator constructor, like below:
 
+#### Findings Api
 ```js
 const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
 const { IamAuthenticator } = require('ibm-security-advisor/auth');
@@ -224,6 +242,94 @@ const findingsAPIClient = new FindingsAPI({
 You can find links to the documentation at https://cloud.ibm.com/docs/security-advisor. Click API reference.
 
 There are also auto-generated JSDocs available at http://ibm-cloud-security.github.io/security-advisor-findings-sdk-nodejs
+
+## IBM Security Advisor Services
+### Findings
+Use the IBM Cloud™ Security Advisor [Findings](https://cloud.ibm.com/docs/services/security-advisor?topic=security-advisor-about#api) API to post metadata and findings.  
+  
+For more details checkout the api docs [here](https://cloud.ibm.com/apidocs/security-advisor/findings).  
+  
+```js
+const FindingsAPI =  require('ibm-security-advisor/findings-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const findingsAPIClient = new FindingsAPI({
+  authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
+  serviceUrl: 'https://us-south.secadvisor.cloud.ibm.com/findings',
+});
+
+findingsAPIClient
+  .listNotes({accountId: "accountId", providerId: "providerId"})
+  .then(
+    response => {
+      // handle response
+      // the body is under property `result`
+      console.log(JSON.stringify(response.result, null, 2));
+
+      // access the headers
+      console.log(JSON.stringify(response.headers, null, 2));
+
+      // access the status code
+      console.log(response.status);
+
+      // access the status text
+      console.log(response.statusText);
+    },
+    err => {
+      // handle request/SDK errors
+      console.log(err);
+    }
+  )
+  .catch(err => {
+    // catch errors in response handling code
+    console.log(err);
+  });
+
+```
+
+### Notifications
+Use the IBM Cloud™ Security Advisor [Notifications](https://cloud.ibm.com/docs/services/security-advisor?topic=security-advisor-notifications) API to get alerted to any reported vulnerabilities as soon as the report is available.  
+  
+For more details, checkout the api docs [here](https://cloud.ibm.com/apidocs/security-advisor/notifications). 
+  
+```js
+const NotificationsAPI =  require('ibm-security-advisor/notifications-api/v1');
+const { IamAuthenticator } = require('ibm-security-advisor/auth');
+
+const notificationsAPIClient = new NotificationsAPI({
+  authenticator: new IamAuthenticator({ apikey: '{apikey}' }),
+  serviceUrl: 'https://us-south.secadvisor.cloud.ibm.com/findings',
+});
+
+notificationsAPIClient
+  .listChannels({accountId: "accountId"})
+  .then(
+    response => {
+      // handle response
+      // the body is under property `result`
+      console.log(JSON.stringify(response.result, null, 2));
+
+      // access the headers
+      console.log(JSON.stringify(response.headers, null, 2));
+
+      // access the status code
+      console.log(response.status);
+
+      // access the status text
+      console.log(response.statusText);
+    },
+    err => {
+      // handle request/SDK errors
+      console.log(err);
+    }
+  )
+  .catch(err => {
+    // catch errors in response handling code
+    console.log(err);
+  });
+
+```
+
 
 ## Questions
 If you are having difficulties using the APIs or have a question about the IBM Cloud Security Advisor offering, please ask a question at [dW Answers](https://developer.ibm.com/answers/questions/ask) or [Stack Overflow](http://stackoverflow.com/questions/ask).
