@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v4.0.0...v4.1.0) (2020-05-18)
+
+
+### Features
+
+* **notifications:** Add support for notifications API ([2a2eed6](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/commit/2a2eed6253acab17fae6309ae380388d549dd593))
+
 # [4.0.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v3.0.1...v4.0.0) (2020-03-31)
 
 
