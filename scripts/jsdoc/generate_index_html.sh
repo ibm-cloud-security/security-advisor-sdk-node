@@ -25,7 +25,7 @@ echo '<!DOCTYPE html>
     </div>
 
     <p><a href="https://cloud.ibm.com/docs/security-advisor">Documentation</a>
-        | <a href="https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs">GitHub</a>
+        | <a href="https://github.com/ibm-cloud-security/security-advisor-sdk-node">GitHub</a>
         | <a href="https://npmjs.org/package/ibm-security-advisor">npm</a>
     </p>
 

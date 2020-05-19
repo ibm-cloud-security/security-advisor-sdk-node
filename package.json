@@ -4,7 +4,7 @@
   "description": "Client library to use the IBM Security Advisor",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs"
+    "url": "https://github.com/ibm-cloud-security/security-advisor-sdk-node"
   },
   "keywords": [
     "ibm",

@@ -17,4 +17,4 @@ deploy:
   script: npx semantic-release
   on:
     node: 12
-    repo: ibm-cloud-security/security-advisor-findings-sdk-nodejs
+    repo: ibm-cloud-security/security-advisor-sdk-node

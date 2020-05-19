@@ -127,7 +127,7 @@ findingsAPIClient
 
 ```
 
-The [examples](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/tree/master/examples) folder has basic and advanced examples for all the services.
+The [examples](https://github.com/ibm-cloud-security/security-advisor-sdk-node/tree/master/examples) folder has basic and advanced examples for all the services.
 
 ### Setting the Service URL
 You can set or reset the base URL after constructing the client instance using the `setServiceUrl` method:
@@ -241,7 +241,7 @@ const findingsAPIClient = new FindingsAPI({
 ## Documentation
 You can find links to the documentation at https://cloud.ibm.com/docs/security-advisor. Click API reference.
 
-There are also auto-generated JSDocs available at http://ibm-cloud-security.github.io/security-advisor-findings-sdk-nodejs
+There are also auto-generated JSDocs available at http://ibm-cloud-security.github.io/security-advisor-sdk-node
 
 ## IBM Security Advisor Services
 ### Findings
