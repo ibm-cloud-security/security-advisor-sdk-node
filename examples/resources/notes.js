@@ -41,7 +41,7 @@ module.exports = [
       url: 'https://www.example.com',
     },
     finding: {
-      severity: 'HIGH',
+      severity: 'CRITICAL',
       next_steps: [
         {
           title: 'Fix this.',

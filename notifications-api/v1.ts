@@ -646,6 +646,7 @@ namespace NotificationsApiV1 {
       LOW = 'low',
       MEDIUM = 'medium',
       HIGH = 'high',
+      CRITICAL = 'critical',
     }
   }
 
@@ -708,6 +709,7 @@ namespace NotificationsApiV1 {
       LOW = 'low',
       MEDIUM = 'medium',
       HIGH = 'high',
+      CRITICAL = 'critical',
     }
   }
 
@@ -768,6 +770,8 @@ namespace NotificationsApiV1 {
 
   /** Severity of the notification. */
   export interface ChannelResponseDefinitionSeverity {
+    /** Critical Severity. */
+    critical?: boolean;
     /** High Severity. */
     high?: boolean;
     /** Medium Severity. */
@@ -832,6 +836,8 @@ namespace NotificationsApiV1 {
 
   /** Severity of the notification. */
   export interface GetChannelResponseChannelSeverity {
+    /** Critical Severity. */
+    critical?: boolean;
     /** High Severity. */
     high?: boolean;
     /** Medium Severity. */
