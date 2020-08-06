@@ -1506,7 +1506,7 @@ namespace FindingsApiV1 {
     image: string;
   }
 
-  /** Note provider-assigned severity/impact ranking - LOW&#58; Low Impact - MEDIUM&#58; Medium Impact - HIGH&#58; High Impact. */
+  /** Note provider-assigned severity/impact ranking - LOW&#58; Low Impact - MEDIUM&#58; Medium Impact - HIGH&#58; High Impact - CRITICAL&#58; Critical Impact. */
   export interface Severity {}
 
   /** It provides details about a socket address. */
