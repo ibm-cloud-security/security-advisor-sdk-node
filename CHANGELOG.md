@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.1.0...v4.2.0) (2020-08-10)
+
+
+### Features
+
+* **notification:** add 'critical' severity for alert notifications ([b8eb120](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/b8eb1205f2ca3f6c560f9004b13d9be512a42866))
+
 # [4.1.0](https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/compare/v4.0.0...v4.1.0) (2020-05-18)
 
 

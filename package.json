@@ -1,6 +1,6 @@
 {
   "name": "ibm-security-advisor",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Client library to use the IBM Security Advisor",
   "repository": {
     "type": "git",
