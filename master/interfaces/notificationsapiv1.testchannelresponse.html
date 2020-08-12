@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>KpiValueType | ibm-security-advisor - v2.0.0</title>
+	<title>TestChannelResponse | ibm-security-advisor - v4.2.0</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ibm-security-advisor - v2.0.0</a>
+					<a href="../index.html" class="title">ibm-security-advisor - v4.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,13 +54,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../classes/findingsapiv1.html">FindingsApiV1</a>
+					<a href="../classes/notificationsapiv1.html">NotificationsApiV1</a>
 				</li>
 				<li>
-					<a href="findingsapiv1.kpivaluetype.html">KpiValueType</a>
+					<a href="notificationsapiv1.testchannelresponse.html">TestChannelResponse</a>
 				</li>
 			</ul>
-			<h1>Interface KpiValueType</h1>
+			<h1>Interface TestChannelResponse</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>KpiValueType.</p>
+						<p>Response of deleted channel.</p>
 					</div>
 				</div>
 			</section>
@@ -78,12 +78,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="findingsapiv1.valuetype.html" class="tsd-signature-type">ValueType</a>
-						<ul class="tsd-hierarchy">
-							<li>
-								<span class="target">KpiValueType</span>
-							</li>
-						</ul>
+						<span class="target">TestChannelResponse</span>
 					</li>
 				</ul>
 			</section>
@@ -95,9 +90,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="findingsapiv1.kpivaluetype.html#kind" class="tsd-kind-icon">kind</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="findingsapiv1.kpivaluetype.html#kpi_note_name" class="tsd-kind-icon">kpi_<wbr>note_<wbr>name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="findingsapiv1.kpivaluetype.html#text" class="tsd-kind-icon">text</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="notificationsapiv1.testchannelresponse.html#test" class="tsd-kind-icon">test</a></li>
 							</ul>
 						</section>
 					</div>
@@ -105,54 +98,18 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="kind" class="tsd-anchor"></a>
-					<h3>kind</h3>
-					<div class="tsd-signature tsd-kind-icon">kind<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="findingsapiv1.valuetype.html">ValueType</a>.<a href="findingsapiv1.valuetype.html#kind">kind</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/blob/07ba7f4/findings-api/v1.ts#L1398">findings-api/v1.ts:1398</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Kind of element</p>
-							<ul>
-								<li>KPI&#58; Kind of value derived from a KPI occurrence</li>
-								<li>FINDING_COUNT&#58; Kind of value derived from a count of finding occurrences.</li>
-							</ul>
-						</div>
-					</div>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="kpi_note_name" class="tsd-anchor"></a>
-					<h3>kpi_<wbr>note_<wbr>name</h3>
-					<div class="tsd-signature tsd-kind-icon">kpi_<wbr>note_<wbr>name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="test" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> test</h3>
+					<div class="tsd-signature tsd-kind-icon">test<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/blob/07ba7f4/findings-api/v1.ts#L1535">findings-api/v1.ts:1535</a></li>
+							<li>Defined in <a href="https://github.com/ibm-cloud-security/security-advisor-sdk-node/blob/5cd2371/notifications-api/v1.ts#L944">notifications-api/v1.ts:944</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>The name of the kpi note associated to the occurrence with the value for this card element value type.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="text" class="tsd-anchor"></a>
-					<h3>text</h3>
-					<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="findingsapiv1.valuetype.html">ValueType</a>.<a href="findingsapiv1.valuetype.html#text">text</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/ibm-cloud-security/security-advisor-findings-sdk-nodejs/blob/07ba7f4/findings-api/v1.ts#L1400">findings-api/v1.ts:1400</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The text of this element type.</p>
+							<p>response status.</p>
 						</div>
 					</div>
 				</section>
@@ -168,27 +125,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<!-- Unless the url is part of the exclusion list, render them -->
+					<li class=" tsd-kind-class">
+						<a href="../classes/findingsapiv1.html" class="tsd-kind-icon">Findings<wbr>Api<wbr>V1</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<!-- Unless the url is part of the exclusion list, render them -->
 					<li class="current tsd-kind-class">
-						<a href="../classes/findingsapiv1.html" class="tsd-kind-icon">Findings<wbr>Api<wbr>V1</a>
+						<a href="../classes/notificationsapiv1.html" class="tsd-kind-icon">Notifications<wbr>Api<wbr>V1</a>
 						<ul>
 							<!-- Unless the url is part of the exclusion list, render them -->
 							<li class="current tsd-kind-interface tsd-parent-kind-class">
-								<a href="findingsapiv1.kpivaluetype.html" class="tsd-kind-icon">Kpi<wbr>Value<wbr>Type</a>
+								<a href="notificationsapiv1.testchannelresponse.html" class="tsd-kind-icon">Test<wbr>Channel<wbr>Response</a>
 								<ul>
 									<!-- Unless the url is part of the exclusion list, render them -->
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="findingsapiv1.kpivaluetype.html#kind" class="tsd-kind-icon">kind</a>
-									</li>
-									<!-- Unless the url is part of the exclusion list, render them -->
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="findingsapiv1.kpivaluetype.html#kpi_note_name" class="tsd-kind-icon">kpi_<wbr>note_<wbr>name</a>
-									</li>
-									<!-- Unless the url is part of the exclusion list, render them -->
-									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-										<a href="findingsapiv1.kpivaluetype.html#text" class="tsd-kind-icon">text</a>
+										<a href="notificationsapiv1.testchannelresponse.html#test" class="tsd-kind-icon">test</a>
 									</li>
 								</ul>
 							</li>
