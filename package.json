@@ -66,6 +66,9 @@
     "coveragePathIgnorePatterns": [
       "<rootDir>/test/"
     ],
+    "moduleNameMapper": {
+      "package.json": "<rootDir>/__mocks__/package.json"
+    },
     "testEnvironment": "node"
   }
 }
