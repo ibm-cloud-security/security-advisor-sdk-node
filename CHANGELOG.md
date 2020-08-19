@@ -1,3 +1,13 @@
+# [4.3.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.2.0...v4.3.0) (2020-08-19)
+
+
+### Features
+
+* **sdk-metrics:** Add User-Agent for sdk metrics instrumentation ([c805eb2](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/c805eb27501daa60a5c95847a053000062bb0adb))
+* **sdk-metrics:** Add User-Agent for sdk metrics instrumentation ([e23b421](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/e23b421b80ea9be7b75fefcf35263b7099ffd8c0))
+* **sdk-metrics:** Add User-Agent for sdk metrics instrumentation ([8d594e1](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/8d594e1bbfad44a6fd220080cecda7208eabdddd))
+* **sdk-metrics:** Add User-Agent for sdk metrics instrumentation ([969cb7b](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/969cb7b1835eb0f613dc75684b6e3d43499c2e04))
+
 # [4.2.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.1.0...v4.2.0) (2020-08-10)
 
 
