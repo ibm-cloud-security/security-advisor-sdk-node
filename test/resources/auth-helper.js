@@ -17,7 +17,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const authPath = path.join(__dirname, './auth.js');
+const authPath = path.join(__dirname, './secrets.js');
 
 const hasAuth = fs.existsSync(authPath);
 

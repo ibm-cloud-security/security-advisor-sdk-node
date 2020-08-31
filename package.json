@@ -6,10 +6,7 @@
     "type": "git",
     "url": "https://github.com/ibm-cloud-security/security-advisor-sdk-node"
   },
-  "keywords": [
-    "ibm",
-    "security-advisor"
-  ],
+  "keywords": ["ibm", "security-advisor"],
   "author": "IBM Corp.",
   "scripts": {
     "eslint:fix": "eslint . --fix",
@@ -28,7 +25,9 @@
     "test-unit-travis": "jest --runInBand test/unit/",
     "test-integration-travis": "jest --runInBand --no-colors --testNamePattern='^((?!@slow).)*$' --json test/integration > test-output.log",
     "report-coverage": "codecov",
-    "check-packages": "installed-check -e -d -v"
+    "check-packages": "installed-check -e -d -v",
+    "encyrpt_secret": "openssl aes-256-cbc -in test/resources/secrets.js -out secrets.js.enc -base64 -K $encrypted_key -iv $encrypted_iv",
+    "decrypt_secret": "openssl aes-256-cbc -d -in secrets.js.enc -out test/resources/secrets.js -base64 -K $encrypted_key -iv $encrypted_iv"
   },
   "license": "Apache-2.0",
   "engines": {
@@ -63,9 +62,7 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "./coverage/",
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/test/"
-    ],
+    "coveragePathIgnorePatterns": ["<rootDir>/test/"],
     "moduleNameMapper": {
       "package.json": "<rootDir>/__mocks__/package.json"
     },

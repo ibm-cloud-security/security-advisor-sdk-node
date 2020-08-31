@@ -5,8 +5,9 @@ module.exports = {
     es6: true,
   },
   rules: {
+    'no-console': 'off',
     'require-jsdoc': 'off',
     'valid-jsdoc': 'off',
-    'no-unused-vars': ['error', { varsIgnorePattern: 'requiredParams' }],
+    'no-unused-vars': ['error', { varsIgnorePattern: 'requiredParams|accountId' }],
   },
 };

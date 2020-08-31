@@ -18,6 +18,8 @@ UPGRADE-4.0.md
 jsdoc/
 doc/
 auth.js.enc
+secrets.js.enc
+secrets.js
 dependency-lint.yml
 karma.conf.js
 transform.js
