@@ -7,9 +7,8 @@ cache:
   npm: false
 before_install:
   - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ ! -z ${encrypted_key} ] &&
-    openssl aes-256-cbc -K $encrypted_key
-    -iv $encrypted_iv -in secrets.js.enc -out test/resources/secrets.js
-    -d || true'
+    openssl aes-256-cbc -d -in secrets.js.enc -out test/resources/secrets.js -K $encrypted_key
+    -iv $encrypted_iv || true'
 script:
 - npm run build
 - npm run test-unit-travis || travis_terminate 1
