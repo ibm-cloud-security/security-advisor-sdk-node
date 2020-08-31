@@ -1,6 +1,6 @@
 const FindingsApiV1 = require('../../dist/findings-api/v1');
-const { IamAuthenticator } = require('ibm-security-advisor/auth');
-const { exception } = require('console');
+const { IamAuthenticator } = require('../../dist/auth');
+require('../resources/secrets.js')
 
 describe('FindingsApiV1 service setup', () => {
     test('should use constructor to setup service with custom url', () => {

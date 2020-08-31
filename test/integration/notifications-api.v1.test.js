@@ -1,5 +1,6 @@
 const NotificationsApiV1 = require('../../dist/notifications-api/v1');
-const { IamAuthenticator } = require('ibm-security-advisor/auth');
+const { IamAuthenticator } = require('../../dist/auth');
+require('../resources/secrets.js')
 
 describe('NotificationsApiV1 service setup', () => {
     test('should use constructor to setup service with custom url', () => {
