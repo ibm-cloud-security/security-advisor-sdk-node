@@ -41,5 +41,5 @@ typings
 *.ts
 !*.d.ts
 *.log
-secrets.tar.enc
+secrets.js.enc
 docker
