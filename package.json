@@ -1,12 +1,15 @@
 {
   "name": "ibm-security-advisor",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "Client library to use the IBM Security Advisor",
   "repository": {
     "type": "git",
     "url": "https://github.com/ibm-cloud-security/security-advisor-sdk-node"
   },
-  "keywords": ["ibm", "security-advisor"],
+  "keywords": [
+    "ibm",
+    "security-advisor"
+  ],
   "author": "IBM Corp.",
   "scripts": {
     "eslint:fix": "eslint . --fix",
@@ -62,7 +65,9 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "./coverage/",
-    "coveragePathIgnorePatterns": ["<rootDir>/test/"],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/test/"
+    ],
     "moduleNameMapper": {
       "package.json": "<rootDir>/__mocks__/package.json"
     },

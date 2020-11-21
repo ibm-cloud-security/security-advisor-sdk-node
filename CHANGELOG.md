@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.3.0...v4.3.1) (2020-11-21)
+
+
+### Bug Fixes
+
+* bump semantic release version ([20f3880](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/20f38805fbd8ef48c1098722f32ad08d8aec04fb))
+
 # [4.3.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.2.0...v4.3.0) (2020-08-19)
 
 
