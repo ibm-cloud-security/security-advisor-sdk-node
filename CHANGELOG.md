@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.3.1...v4.3.2) (2021-01-11)
+
+
+### Bug Fixes
+
+* axios vulnerability + update IBM Cloud sdk core (vulnerabilities) ([c96503b](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/c96503b4ecbd1d4c8619fdc036e0ceffd5f1afd4))
+
 ## [4.3.1](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.3.0...v4.3.1) (2020-11-21)
 
 
