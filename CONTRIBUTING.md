@@ -6,7 +6,7 @@ please ask a question on [Stack Overflow](http://stackoverflow.com/questions/ask
 
 # Issues
 
-If you encounter an issue with the project, you are welcome to submit a [bug report](<github-repo-url>/issues).
+If you encounter an issue with the project, you are welcome to submit a [bug report](https://github.com/ibm-cloud-security/security-advisor-sdk-node/issues).
 Before that, please search for similar issues. It's possible that someone has already reported the problem.
 
 # Pull Requests
