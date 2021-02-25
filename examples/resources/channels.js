@@ -6,9 +6,9 @@ module.exports = [
     severity: ['low', 'critical'],
     endpoint: 'http://mywebhook.com',
     enabled: true,
-    alertSource: [
+    alert_source: [
       {
-        provider_name: 'ALL',
+        provider_name: 'CERT',
         finding_types: ['ALL'],
       },
     ],

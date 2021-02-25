@@ -127,7 +127,7 @@ describe('NotificationsApiV1', () => {
         const description = 'fake_description';
         const severity = 'fake_severity';
         const enabled = 'fake_enabled';
-        const alertSource = 'fake_alertSource';
+        const alert_source = 'fake_alertSource';
         const params = {
           accountId,
           name,
@@ -136,7 +136,7 @@ describe('NotificationsApiV1', () => {
           description,
           severity,
           enabled,
-          alertSource,
+          alert_source,
         };
 
         const createNotificationChannelResult = notificationsApi.createNotificationChannel(params);
@@ -159,7 +159,7 @@ describe('NotificationsApiV1', () => {
         expect(options.body['description']).toEqual(description);
         expect(options.body['severity']).toEqual(severity);
         expect(options.body['enabled']).toEqual(enabled);
-        expect(options.body['alertSource']).toEqual(alertSource);
+        expect(options.body['alert_source']).toEqual(alert_source);
         expect(options.path['account_id']).toEqual(accountId);
       });
 
@@ -472,7 +472,7 @@ describe('NotificationsApiV1', () => {
         const description = 'fake_description';
         const severity = 'fake_severity';
         const enabled = 'fake_enabled';
-        const alertSource = 'fake_alertSource';
+        const alert_source = 'fake_alertSource';
         const params = {
           accountId,
           channelId,
@@ -482,7 +482,7 @@ describe('NotificationsApiV1', () => {
           description,
           severity,
           enabled,
-          alertSource,
+          alert_source,
         };
 
         const updateNotificationChannelResult = notificationsApi.updateNotificationChannel(params);
@@ -505,7 +505,7 @@ describe('NotificationsApiV1', () => {
         expect(options.body['description']).toEqual(description);
         expect(options.body['severity']).toEqual(severity);
         expect(options.body['enabled']).toEqual(enabled);
-        expect(options.body['alertSource']).toEqual(alertSource);
+        expect(options.body['alert_source']).toEqual(alert_source);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['channel_id']).toEqual(channelId);
       });
