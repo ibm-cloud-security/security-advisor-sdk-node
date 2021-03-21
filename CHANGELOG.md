@@ -1,3 +1,13 @@
+# [5.0.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.3.2...v5.0.0) (2021-03-21)
+
+
+* Merge pull request #23 from ibm-cloud-security/openapi ([7492282](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/74922828117cb86ee05cb646487ac479a917f764)), closes [#23](https://github.com/ibm-cloud-security/security-advisor-sdk-node/issues/23)
+
+
+### BREAKING CHANGES
+
+* Fix openapi validation errors
+
 ## [4.3.2](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.3.1...v4.3.2) (2021-01-11)
 
 
