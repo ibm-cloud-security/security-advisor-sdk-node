@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v5.0.0...v5.0.1) (2021-03-21)
+
+
+### Bug Fixes
+
+* **alert_source:** Fix alert source data not being sent ([87159be](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/87159be8133fce4c8685dfdc841bcc073cb90f3c))
+
 # [5.0.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v4.3.2...v5.0.0) (2021-03-21)
 
 
