@@ -156,13 +156,20 @@ describe('NotificationsApiV1 createChannels', () => {
         name: 'create_' + Date.now(),
         endpoint: 'https://ss.ss',
         type: 'Webhook',
-        alertSource: [{ provider_name: 'VA', finding_types: ['ALL'] }],
+        alert_source: [{ provider_name: 'VA', finding_types: ['ALL'] }],
         description: 'desc',
         enabled: true,
         severity: ['high'],
       });
       expect(resp.status).toBe(200);
       console.log('Successfully created channel with all param');
+
+      const getResp = await client.getNotificationChannel({
+        accountId: accountId,
+        channelId: resp.result.channel_id,
+      });
+      let channel = getResp.result.channel
+      expect(channel.alert_source).toEqual([{ provider_name: 'VA', finding_types: ['ALL'] }])
 
       const deleteResp = await client.deleteNotificationChannel({
         accountId: accountId,
@@ -215,11 +222,18 @@ describe('NotificationsApiV1 updateChannel', () => {
         name: 'test_' + Date.now(),
         endpoint: 'https://ss.ss',
         type: 'Webhook',
-        alertSource: [{ provider_name: 'VA', finding_types: ['ALL'] }],
+        alert_source: [{ provider_name: 'VA', finding_types: ['ALL'] }],
         severity: ['high'],
       });
       expect(updateResp.status).toBe(200);
       console.log('Successfully updated channel');
+
+      const getResp = await client.getNotificationChannel({
+        accountId: accountId,
+        channelId: resp.result.channel_id,
+      });
+      let channel = getResp.result.channel
+      expect(channel.alert_source).toEqual([{ provider_name: 'VA', finding_types: ['ALL'] }])
 
       const deleteResp = await client.deleteNotificationChannel({
         accountId: accountId,
@@ -316,11 +330,11 @@ describe('NotificationsApiV1 deleteChannel', () => {
       expect(resp.status).toBe(200);
       console.log('Successfully created channel');
 
-      const getResp = await client.deleteNotificationChannel({
+      const delResp = await client.deleteNotificationChannel({
         accountId: accountId,
         channelId: resp.result.channel_id,
       });
-      expect(getResp.status).toBe(200);
+      expect(delResp.status).toBe(200);
       console.log('Successfully deleted channel');
 
       done();
@@ -465,6 +479,7 @@ describe('NotificationsApiV1 testNotificationChannel', () => {
       expect(testResp.status).toBe(200);
       done();
     } catch (err) {
+      console.log(err)
       done(err);
     }
   });

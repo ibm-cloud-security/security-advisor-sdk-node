@@ -184,7 +184,7 @@ class NotificationsApiV1 extends BaseService {
         description: _params.description,
         severity: _params.severity,
         enabled: _params.enabled,
-        alertSource: _params.alertSource,
+        alert_source: _params.alert_source,
       };
 
       const path = {
@@ -428,7 +428,7 @@ class NotificationsApiV1 extends BaseService {
         description: _params.description,
         severity: _params.severity,
         enabled: _params.enabled,
-        alertSource: _params.alertSource,
+        alert_source: _params.alert_source,
       };
 
       const path = {
