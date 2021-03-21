@@ -168,8 +168,8 @@ describe('NotificationsApiV1 createChannels', () => {
         accountId: accountId,
         channelId: resp.result.channel_id,
       });
-      let channel = getResp.result.channel
-      expect(channel.alert_source).toEqual([{ provider_name: 'VA', finding_types: ['ALL'] }])
+      const channel = getResp.result.channel;
+      expect(channel.alert_source).toEqual([{ provider_name: 'VA', finding_types: ['ALL'] }]);
 
       const deleteResp = await client.deleteNotificationChannel({
         accountId: accountId,
@@ -232,8 +232,8 @@ describe('NotificationsApiV1 updateChannel', () => {
         accountId: accountId,
         channelId: resp.result.channel_id,
       });
-      let channel = getResp.result.channel
-      expect(channel.alert_source).toEqual([{ provider_name: 'VA', finding_types: ['ALL'] }])
+      const channel = getResp.result.channel;
+      expect(channel.alert_source).toEqual([{ provider_name: 'VA', finding_types: ['ALL'] }]);
 
       const deleteResp = await client.deleteNotificationChannel({
         accountId: accountId,
@@ -479,7 +479,7 @@ describe('NotificationsApiV1 testNotificationChannel', () => {
       expect(testResp.status).toBe(200);
       done();
     } catch (err) {
-      console.log(err)
+      console.log(err);
       done(err);
     }
   });

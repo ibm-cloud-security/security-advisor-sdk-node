@@ -161,7 +161,7 @@ class NotificationsApiV1 extends BaseService {
    * @param {string} [params.description] - A one sentence description of this `Channel`.
    * @param {string[]} [params.severity] - Severity of the notification to be received.
    * @param {boolean} [params.enabled] - Channel is enabled or not. Default is disabled.
-   * @param {NotificationChannelAlertSourceItem[]} [params.alertSource] -
+   * @param {NotificationChannelAlertSourceItem[]} [params.alert_source] -
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<NotificationsApiV1.Response<NotificationsApiV1.CreateChannelsResponse>>}
    */
@@ -405,7 +405,7 @@ class NotificationsApiV1 extends BaseService {
    * @param {string} [params.description] - A one sentence description of this `Channel`.
    * @param {string[]} [params.severity] - Severity of the notification to be received.
    * @param {boolean} [params.enabled] - Channel is enabled or not. Default is disabled.
-   * @param {NotificationChannelAlertSourceItem[]} [params.alertSource] -
+   * @param {NotificationChannelAlertSourceItem[]} [params.alert_source] -
    * @param {OutgoingHttpHeaders} [params.headers] - Custom request headers
    * @returns {Promise<NotificationsApiV1.Response<NotificationsApiV1.UpdateChannelResponse>>}
    */
@@ -631,7 +631,7 @@ namespace NotificationsApiV1 {
     severity?: CreateNotificationChannelConstants.Severity | string[];
     /** Channel is enabled or not. Default is disabled. */
     enabled?: boolean;
-    alertSource?: NotificationChannelAlertSourceItem[];
+    alert_source?: NotificationChannelAlertSourceItem[];
     headers?: OutgoingHttpHeaders;
   }
 
@@ -694,7 +694,7 @@ namespace NotificationsApiV1 {
     severity?: UpdateNotificationChannelConstants.Severity | string[];
     /** Channel is enabled or not. Default is disabled. */
     enabled?: boolean;
-    alertSource?: NotificationChannelAlertSourceItem[];
+    alert_source?: NotificationChannelAlertSourceItem[];
     headers?: OutgoingHttpHeaders;
   }
 
