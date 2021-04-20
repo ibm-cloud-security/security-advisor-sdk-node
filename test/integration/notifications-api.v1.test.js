@@ -156,7 +156,7 @@ describe('NotificationsApiV1 createChannels', () => {
         name: 'create_' + Date.now(),
         endpoint: 'https://ss.ss',
         type: 'Webhook',
-        alertSource: [{ provider_name: 'VA', finding_types: ['ALL'] }],
+        alert_source: [{ provider_name: 'VA', finding_types: ['ALL'] }],
         description: 'desc',
         enabled: true,
         severity: ['high'],
@@ -222,7 +222,7 @@ describe('NotificationsApiV1 updateChannel', () => {
         name: 'test_' + Date.now(),
         endpoint: 'https://ss.ss',
         type: 'Webhook',
-        alertSource: [{ provider_name: 'VA', finding_types: ['ALL'] }],
+        alert_source: [{ provider_name: 'VA', finding_types: ['ALL'] }],
         severity: ['high'],
       });
       expect(updateResp.status).toBe(200);
