@@ -135,10 +135,11 @@ Currently there are two supported endpoints:
 1. findings:   
     https://eu-gb.secadvisor.cloud.ibm.com/findings  
     https://us-south.secadvisor.cloud.ibm.com/findings
+    https://eu.compliance.cloud.ibm.com/si/findings
 2. notifications:  
     https://eu-gb.secadvisor.cloud.ibm.com/notifications  
     https://us-south.secadvisor.cloud.ibm.com/notifications
-
+    https://eu.compliance.cloud.ibm.com/si/notifications
 
 ```js
 const NotificationsApi =  require('ibm-security-advisor/notifications-api/v1');
