@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2020.
+ * (C) Copyright IBM Corp. 2021.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,41 +15,106 @@
  */
 'use strict';
 
-const { NoAuthAuthenticator, unitTestUtils } = require('ibm-cloud-sdk-core');
+// need to import the whole package to mock getAuthenticatorFromEnvironment
+const core = require('ibm-cloud-sdk-core');
+const { NoAuthAuthenticator, unitTestUtils } = core;
+
 const NotificationsApiV1 = require('../../dist/notifications-api/v1');
 
-const { getOptions, checkUrlAndMethod, checkMediaHeaders, expectToBePromise } = unitTestUtils;
+const {
+  getOptions,
+  checkUrlAndMethod,
+  checkMediaHeaders,
+  expectToBePromise,
+  checkUserHeader,
+} = unitTestUtils;
 
 const service = {
   authenticator: new NoAuthAuthenticator(),
-  url: 'https://us-south.secadvisor.cloud.ibm.com/notifications',
+  url: 'https://notifications-api.cloud.ibm.com/notifications',
 };
 
-const notificationsApi = new NotificationsApiV1(service);
-const createRequestMock = jest.spyOn(notificationsApi, 'createRequest');
+const notificationsApiService = new NotificationsApiV1(service);
 
 // dont actually create a request
+const createRequestMock = jest.spyOn(notificationsApiService, 'createRequest');
 createRequestMock.mockImplementation(() => Promise.resolve());
+
+// dont actually construct an authenticator
+const getAuthenticatorMock = jest.spyOn(core, 'getAuthenticatorFromEnvironment');
+getAuthenticatorMock.mockImplementation(() => new NoAuthAuthenticator());
 
 afterEach(() => {
   createRequestMock.mockClear();
+  getAuthenticatorMock.mockClear();
 });
 
 describe('NotificationsApiV1', () => {
+  describe('the newInstance method', () => {
+    test('should use defaults when options not provided', () => {
+      const testInstance = NotificationsApiV1.newInstance();
+
+      expect(getAuthenticatorMock).toHaveBeenCalled();
+      expect(testInstance.baseOptions.authenticator).toBeInstanceOf(NoAuthAuthenticator);
+      expect(testInstance.baseOptions.serviceName).toBe(NotificationsApiV1.DEFAULT_SERVICE_NAME);
+      expect(testInstance.baseOptions.serviceUrl).toBe(NotificationsApiV1.DEFAULT_SERVICE_URL);
+      expect(testInstance).toBeInstanceOf(NotificationsApiV1);
+    });
+
+    test('should set serviceName, serviceUrl, and authenticator when provided', () => {
+      const options = {
+        authenticator: new NoAuthAuthenticator(),
+        serviceUrl: 'custom.com',
+        serviceName: 'my-service',
+      };
+
+      const testInstance = NotificationsApiV1.newInstance(options);
+
+      expect(getAuthenticatorMock).not.toHaveBeenCalled();
+      expect(testInstance.baseOptions.authenticator).toBeInstanceOf(NoAuthAuthenticator);
+      expect(testInstance.baseOptions.serviceUrl).toBe('custom.com');
+      expect(testInstance.baseOptions.serviceName).toBe('my-service');
+      expect(testInstance).toBeInstanceOf(NotificationsApiV1);
+    });
+  });
+  describe('the constructor', () => {
+    test('use user-given service url', () => {
+      const options = {
+        authenticator: new NoAuthAuthenticator(),
+        serviceUrl: 'custom.com',
+      };
+
+      const testInstance = new NotificationsApiV1(options);
+
+      expect(testInstance.baseOptions.serviceUrl).toBe('custom.com');
+    });
+
+    test('use default service url', () => {
+      const options = {
+        authenticator: new NoAuthAuthenticator(),
+      };
+
+      const testInstance = new NotificationsApiV1(options);
+
+      expect(testInstance.baseOptions.serviceUrl).toBe(NotificationsApiV1.DEFAULT_SERVICE_URL);
+    });
+  });
   describe('listAllChannels', () => {
     describe('positive tests', () => {
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const limit = 'fake_limit';
-        const skip = 'fake_skip';
+        // Construct the params object for operation listAllChannels
+        const accountId = 'testString';
+        const transactionId = 'testString';
+        const limit = 38;
+        const skip = 38;
         const params = {
-          accountId,
-          limit,
-          skip,
+          accountId: accountId,
+          transactionId: transactionId,
+          limit: limit,
+          skip: skip,
         };
 
-        const listAllChannelsResult = notificationsApi.listAllChannels(params);
+        const listAllChannelsResult = notificationsApiService.listAllChannels(params);
 
         // all methods should return a Promise
         expectToBePromise(listAllChannelsResult);
@@ -63,6 +128,7 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.qs['limit']).toEqual(limit);
         expect(options.qs['skip']).toEqual(skip);
         expect(options.path['account_id']).toEqual(accountId);
@@ -70,9 +136,9 @@ describe('NotificationsApiV1', () => {
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           headers: {
@@ -81,19 +147,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.listAllChannels(params);
+        notificationsApiService.listAllChannels(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId'];
-
         let err;
         try {
-          await notificationsApi.listAllChannels({});
+          await notificationsApiService.listAllChannels({});
         } catch (e) {
           err = e;
         }
@@ -103,10 +166,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId'];
-
-        const listAllChannelsPromise = notificationsApi.listAllChannels();
+        const listAllChannelsPromise = notificationsApiService.listAllChannels();
         expectToBePromise(listAllChannelsPromise);
 
         listAllChannelsPromise.catch(err => {
@@ -118,28 +178,40 @@ describe('NotificationsApiV1', () => {
   });
   describe('createNotificationChannel', () => {
     describe('positive tests', () => {
+      // Request models needed by this operation.
+
+      // NotificationChannelAlertSourceItem
+      const notificationChannelAlertSourceItemModel = {
+        provider_name: 'testString',
+        finding_types: ['testString'],
+      };
+
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const name = 'fake_name';
-        const type = 'fake_type';
-        const endpoint = 'fake_endpoint';
-        const description = 'fake_description';
-        const severity = 'fake_severity';
-        const enabled = 'fake_enabled';
-        const alert_source = 'fake_alertSource';
+        // Construct the params object for operation createNotificationChannel
+        const accountId = 'testString';
+        const name = 'testString';
+        const type = 'Webhook';
+        const endpoint = 'testString';
+        const description = 'testString';
+        const severity = ['low'];
+        const enabled = true;
+        const alertSource = [notificationChannelAlertSourceItemModel];
+        const transactionId = 'testString';
         const params = {
-          accountId,
-          name,
-          type,
-          endpoint,
-          description,
-          severity,
-          enabled,
-          alert_source,
+          accountId: accountId,
+          name: name,
+          type: type,
+          endpoint: endpoint,
+          description: description,
+          severity: severity,
+          enabled: enabled,
+          alertSource: alertSource,
+          transactionId: transactionId,
         };
 
-        const createNotificationChannelResult = notificationsApi.createNotificationChannel(params);
+        const createNotificationChannelResult = notificationsApiService.createNotificationChannel(
+          params
+        );
 
         // all methods should return a Promise
         expectToBePromise(createNotificationChannelResult);
@@ -153,24 +225,25 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.body['name']).toEqual(name);
         expect(options.body['type']).toEqual(type);
         expect(options.body['endpoint']).toEqual(endpoint);
         expect(options.body['description']).toEqual(description);
         expect(options.body['severity']).toEqual(severity);
         expect(options.body['enabled']).toEqual(enabled);
-        expect(options.body['alert_source']).toEqual(alert_source);
+        expect(options.body['alert_source']).toEqual(alertSource);
         expect(options.path['account_id']).toEqual(accountId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const name = 'fake_name';
-        const type = 'fake_type';
-        const endpoint = 'fake_endpoint';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const name = 'testString';
+        const type = 'Webhook';
+        const endpoint = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           name,
@@ -182,19 +255,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.createNotificationChannel(params);
+        notificationsApiService.createNotificationChannel(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'name', 'type', 'endpoint'];
-
         let err;
         try {
-          await notificationsApi.createNotificationChannel({});
+          await notificationsApiService.createNotificationChannel({});
         } catch (e) {
           err = e;
         }
@@ -204,10 +274,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'name', 'type', 'endpoint'];
-
-        const createNotificationChannelPromise = notificationsApi.createNotificationChannel();
+        const createNotificationChannelPromise = notificationsApiService.createNotificationChannel();
         expectToBePromise(createNotificationChannelPromise);
 
         createNotificationChannelPromise.catch(err => {
@@ -220,15 +287,17 @@ describe('NotificationsApiV1', () => {
   describe('deleteNotificationChannels', () => {
     describe('positive tests', () => {
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const body = 'fake_body';
+        // Construct the params object for operation deleteNotificationChannels
+        const accountId = 'testString';
+        const requestBody = ['testString'];
+        const transactionId = 'testString';
         const params = {
-          accountId,
-          body,
+          accountId: accountId,
+          body: requestBody,
+          transactionId: transactionId,
         };
 
-        const deleteNotificationChannelsResult = notificationsApi.deleteNotificationChannels(
+        const deleteNotificationChannelsResult = notificationsApiService.deleteNotificationChannels(
           params
         );
 
@@ -244,16 +313,17 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
-        expect(options.body).toEqual(body);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
+        expect(options.body).toEqual(requestBody);
         expect(options.path['account_id']).toEqual(accountId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const body = 'fake_body';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const body = ['testString'];
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           body,
@@ -263,19 +333,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.deleteNotificationChannels(params);
+        notificationsApiService.deleteNotificationChannels(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'body'];
-
         let err;
         try {
-          await notificationsApi.deleteNotificationChannels({});
+          await notificationsApiService.deleteNotificationChannels({});
         } catch (e) {
           err = e;
         }
@@ -285,10 +352,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'body'];
-
-        const deleteNotificationChannelsPromise = notificationsApi.deleteNotificationChannels();
+        const deleteNotificationChannelsPromise = notificationsApiService.deleteNotificationChannels();
         expectToBePromise(deleteNotificationChannelsPromise);
 
         deleteNotificationChannelsPromise.catch(err => {
@@ -301,15 +365,19 @@ describe('NotificationsApiV1', () => {
   describe('deleteNotificationChannel', () => {
     describe('positive tests', () => {
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
+        // Construct the params object for operation deleteNotificationChannel
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const transactionId = 'testString';
         const params = {
-          accountId,
-          channelId,
+          accountId: accountId,
+          channelId: channelId,
+          transactionId: transactionId,
         };
 
-        const deleteNotificationChannelResult = notificationsApi.deleteNotificationChannel(params);
+        const deleteNotificationChannelResult = notificationsApiService.deleteNotificationChannel(
+          params
+        );
 
         // all methods should return a Promise
         expectToBePromise(deleteNotificationChannelResult);
@@ -327,16 +395,17 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['channel_id']).toEqual(channelId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           channelId,
@@ -346,19 +415,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.deleteNotificationChannel(params);
+        notificationsApiService.deleteNotificationChannel(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId'];
-
         let err;
         try {
-          await notificationsApi.deleteNotificationChannel({});
+          await notificationsApiService.deleteNotificationChannel({});
         } catch (e) {
           err = e;
         }
@@ -368,10 +434,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId'];
-
-        const deleteNotificationChannelPromise = notificationsApi.deleteNotificationChannel();
+        const deleteNotificationChannelPromise = notificationsApiService.deleteNotificationChannel();
         expectToBePromise(deleteNotificationChannelPromise);
 
         deleteNotificationChannelPromise.catch(err => {
@@ -384,15 +447,17 @@ describe('NotificationsApiV1', () => {
   describe('getNotificationChannel', () => {
     describe('positive tests', () => {
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
+        // Construct the params object for operation getNotificationChannel
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const transactionId = 'testString';
         const params = {
-          accountId,
-          channelId,
+          accountId: accountId,
+          channelId: channelId,
+          transactionId: transactionId,
         };
 
-        const getNotificationChannelResult = notificationsApi.getNotificationChannel(params);
+        const getNotificationChannelResult = notificationsApiService.getNotificationChannel(params);
 
         // all methods should return a Promise
         expectToBePromise(getNotificationChannelResult);
@@ -406,16 +471,17 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['channel_id']).toEqual(channelId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           channelId,
@@ -425,19 +491,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.getNotificationChannel(params);
+        notificationsApiService.getNotificationChannel(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId'];
-
         let err;
         try {
-          await notificationsApi.getNotificationChannel({});
+          await notificationsApiService.getNotificationChannel({});
         } catch (e) {
           err = e;
         }
@@ -447,10 +510,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId'];
-
-        const getNotificationChannelPromise = notificationsApi.getNotificationChannel();
+        const getNotificationChannelPromise = notificationsApiService.getNotificationChannel();
         expectToBePromise(getNotificationChannelPromise);
 
         getNotificationChannelPromise.catch(err => {
@@ -462,30 +522,42 @@ describe('NotificationsApiV1', () => {
   });
   describe('updateNotificationChannel', () => {
     describe('positive tests', () => {
+      // Request models needed by this operation.
+
+      // NotificationChannelAlertSourceItem
+      const notificationChannelAlertSourceItemModel = {
+        provider_name: 'testString',
+        finding_types: ['testString'],
+      };
+
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
-        const name = 'fake_name';
-        const type = 'fake_type';
-        const endpoint = 'fake_endpoint';
-        const description = 'fake_description';
-        const severity = 'fake_severity';
-        const enabled = 'fake_enabled';
-        const alert_source = 'fake_alertSource';
+        // Construct the params object for operation updateNotificationChannel
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const name = 'testString';
+        const type = 'Webhook';
+        const endpoint = 'testString';
+        const description = 'testString';
+        const severity = ['low'];
+        const enabled = true;
+        const alertSource = [notificationChannelAlertSourceItemModel];
+        const transactionId = 'testString';
         const params = {
-          accountId,
-          channelId,
-          name,
-          type,
-          endpoint,
-          description,
-          severity,
-          enabled,
-          alert_source,
+          accountId: accountId,
+          channelId: channelId,
+          name: name,
+          type: type,
+          endpoint: endpoint,
+          description: description,
+          severity: severity,
+          enabled: enabled,
+          alertSource: alertSource,
+          transactionId: transactionId,
         };
 
-        const updateNotificationChannelResult = notificationsApi.updateNotificationChannel(params);
+        const updateNotificationChannelResult = notificationsApiService.updateNotificationChannel(
+          params
+        );
 
         // all methods should return a Promise
         expectToBePromise(updateNotificationChannelResult);
@@ -499,26 +571,27 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = 'application/json';
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.body['name']).toEqual(name);
         expect(options.body['type']).toEqual(type);
         expect(options.body['endpoint']).toEqual(endpoint);
         expect(options.body['description']).toEqual(description);
         expect(options.body['severity']).toEqual(severity);
         expect(options.body['enabled']).toEqual(enabled);
-        expect(options.body['alert_source']).toEqual(alert_source);
+        expect(options.body['alert_source']).toEqual(alertSource);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['channel_id']).toEqual(channelId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
-        const name = 'fake_name';
-        const type = 'fake_type';
-        const endpoint = 'fake_endpoint';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const name = 'testString';
+        const type = 'Webhook';
+        const endpoint = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           channelId,
@@ -531,19 +604,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.updateNotificationChannel(params);
+        notificationsApiService.updateNotificationChannel(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId', 'name', 'type', 'endpoint'];
-
         let err;
         try {
-          await notificationsApi.updateNotificationChannel({});
+          await notificationsApiService.updateNotificationChannel({});
         } catch (e) {
           err = e;
         }
@@ -553,10 +623,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId', 'name', 'type', 'endpoint'];
-
-        const updateNotificationChannelPromise = notificationsApi.updateNotificationChannel();
+        const updateNotificationChannelPromise = notificationsApiService.updateNotificationChannel();
         expectToBePromise(updateNotificationChannelPromise);
 
         updateNotificationChannelPromise.catch(err => {
@@ -569,15 +636,19 @@ describe('NotificationsApiV1', () => {
   describe('testNotificationChannel', () => {
     describe('positive tests', () => {
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
+        // Construct the params object for operation testNotificationChannel
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const transactionId = 'testString';
         const params = {
-          accountId,
-          channelId,
+          accountId: accountId,
+          channelId: channelId,
+          transactionId: transactionId,
         };
 
-        const testNotificationChannelResult = notificationsApi.testNotificationChannel(params);
+        const testNotificationChannelResult = notificationsApiService.testNotificationChannel(
+          params
+        );
 
         // all methods should return a Promise
         expectToBePromise(testNotificationChannelResult);
@@ -595,16 +666,17 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.path['account_id']).toEqual(accountId);
         expect(options.path['channel_id']).toEqual(channelId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const channelId = 'fake_channelId';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const channelId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           channelId,
@@ -614,19 +686,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.testNotificationChannel(params);
+        notificationsApiService.testNotificationChannel(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId'];
-
         let err;
         try {
-          await notificationsApi.testNotificationChannel({});
+          await notificationsApiService.testNotificationChannel({});
         } catch (e) {
           err = e;
         }
@@ -636,10 +705,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId', 'channelId'];
-
-        const testNotificationChannelPromise = notificationsApi.testNotificationChannel();
+        const testNotificationChannelPromise = notificationsApiService.testNotificationChannel();
         expectToBePromise(testNotificationChannelPromise);
 
         testNotificationChannelPromise.catch(err => {
@@ -652,13 +718,15 @@ describe('NotificationsApiV1', () => {
   describe('getPublicKey', () => {
     describe('positive tests', () => {
       test('should pass the right params to createRequest', () => {
-        // parameters
-        const accountId = 'fake_accountId';
+        // Construct the params object for operation getPublicKey
+        const accountId = 'testString';
+        const transactionId = 'testString';
         const params = {
-          accountId,
+          accountId: accountId,
+          transactionId: transactionId,
         };
 
-        const getPublicKeyResult = notificationsApi.getPublicKey(params);
+        const getPublicKeyResult = notificationsApiService.getPublicKey(params);
 
         // all methods should return a Promise
         expectToBePromise(getPublicKeyResult);
@@ -672,14 +740,15 @@ describe('NotificationsApiV1', () => {
         const expectedAccept = 'application/json';
         const expectedContentType = undefined;
         checkMediaHeaders(createRequestMock, expectedAccept, expectedContentType);
+        checkUserHeader(createRequestMock, 'Transaction-Id', transactionId);
         expect(options.path['account_id']).toEqual(accountId);
       });
 
       test('should prioritize user-given headers', () => {
         // parameters
-        const accountId = 'fake_accountId';
-        const userAccept = 'fake/header';
-        const userContentType = 'fake/header';
+        const accountId = 'testString';
+        const userAccept = 'fake/accept';
+        const userContentType = 'fake/contentType';
         const params = {
           accountId,
           headers: {
@@ -688,19 +757,16 @@ describe('NotificationsApiV1', () => {
           },
         };
 
-        notificationsApi.getPublicKey(params);
+        notificationsApiService.getPublicKey(params);
         checkMediaHeaders(createRequestMock, userAccept, userContentType);
       });
     });
 
     describe('negative tests', () => {
       test('should enforce required parameters', async done => {
-        // required parameters for this method
-        const requiredParams = ['accountId'];
-
         let err;
         try {
-          await notificationsApi.getPublicKey({});
+          await notificationsApiService.getPublicKey({});
         } catch (e) {
           err = e;
         }
@@ -710,10 +776,7 @@ describe('NotificationsApiV1', () => {
       });
 
       test('should reject promise when required params are not given', done => {
-        // required parameters for this method
-        const requiredParams = ['accountId'];
-
-        const getPublicKeyPromise = notificationsApi.getPublicKey();
+        const getPublicKeyPromise = notificationsApiService.getPublicKey();
         expectToBePromise(getPublicKeyPromise);
 
         getPublicKeyPromise.catch(err => {
