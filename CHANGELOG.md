@@ -1,3 +1,13 @@
+# [6.0.0](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v5.0.1...v6.0.0) (2021-04-20)
+
+
+* Merge pull request #26 from prince737/master ([474b478](https://github.com/ibm-cloud-security/security-advisor-sdk-node/commit/474b478d611936d1ec68e8c8620a8b4680b78276)), closes [#26](https://github.com/ibm-cloud-security/security-advisor-sdk-node/issues/26)
+
+
+### BREAKING CHANGES
+
+* update response definitions
+
 ## [5.0.1](https://github.com/ibm-cloud-security/security-advisor-sdk-node/compare/v5.0.0...v5.0.1) (2021-03-21)
 
 
