@@ -1,5 +1,5 @@
 # DEPRECATED
-Please migrate to new SDK https://github.com/IBM/scc-node-sdk
+The Security Insights feature is deprecated and will no longer be supported. Please migrate to new SDK https://github.com/IBM/scc-node-sdk
 
 # IBM Cloud Security Advisor Node.js SDK
 [![Build Status](https://api.travis-ci.org/ibm-cloud-security/security-advisor-sdk-node.svg?branch=master)](https://travis-ci.org/github/ibm-cloud-security/security-advisor-sdk-node)
